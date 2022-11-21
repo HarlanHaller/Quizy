@@ -1,0 +1,51 @@
+body {
+	text-align: center;
+}
+
+.button {
+	font-size: 1rem;
+	padding: 15px;
+	height: 1.2rem;
+	background-color: var(--accent);
+	color: white;
+	text-decoration: none;
+}
+
+.spaceleft {
+	margin-left: 10px;
+}
+
+.spaceright {
+	margin-right: 10px;
+}
+
+.buttonContainer {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	height: 68px;
+}
+
+.suggested {
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+}
+
+.suggested div {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 33%;
+	min-width: 150px;
+	height: calc(33vw*0.3);
+	min-height: calc(150px*0.3);
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: white;
+	padding: 17px 12px;
+	margin: 0px 6px;
+	font-size: 20px;
+}

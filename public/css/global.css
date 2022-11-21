@@ -1,0 +1,105 @@
+:root {
+	--lightgray: rgb(218, 219, 220);
+	--accent: #3898ec;
+	--backgroundGray: rgb(246, 247, 251);
+	--lightblue: rgb(188, 210, 242);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	padding: 0;
+	margin: 0;
+	background-color: var(--backgroundGray);
+}
+
+.navContainer {
+	height: 80px;
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+	background-color: var(--lightgray);
+}
+
+.heading {
+	text-align: center;
+	margin: 0;
+	/* padding-top: 10px;
+	padding-bottom: 10px; */
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 400px;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+	display: flex;
+	align-items: center;
+	float: left;
+	text-align: center;
+	padding: 0px 16px;
+	height: 100%;
+	width: fit-content;
+	text-decoration: none;
+	font-size: 17px;
+	/* background-color: var(--lightblue); */
+	color: black;
+}
+
+/* Change the color of links on hover */
+/* .topnav div a:hover {
+	border-bottom: 4px solid var(--accent);
+	border-radius: 1px;
+} */
+
+.topnav div {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+}
+
+/* Add a color to the active/current link */
+.topnav div::after {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 4px;
+	border-radius: 5px;
+	background-color: var(--lightgray);
+}
+
+.topnav div:hover::after {
+	background-color: var(--accent);
+}
+
+.topnav div.active::after {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 4px;
+	border-radius: 5px;
+	background-color: var(--accent);
+}
+
+.version_box {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	height: fit-content;
+	min-height: 2rem;
+	background-color: var(--lightgray);
+	padding-top: 0.5rem;
+	font-size: 1rem;
+	margin: 0;
+}
