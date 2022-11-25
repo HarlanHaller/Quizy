@@ -1,6 +1,5 @@
-const userdata = window.dataLoader.getUserData();
-const sets = userdata.sets
-const virtSetTable = [];
+const userdataPromise = window.dataLoader.getUserData();
+const setsPromise = new Promise((resolve) => { userdataPromise.then(userdata => resolve(userdata.sets)) });
 
 function createElem(type, parent, Text, attributes) {
     Text = Text || "";
@@ -13,7 +12,8 @@ function createElem(type, parent, Text, attributes) {
     return elem;
 }
 
-function generateVirtTable() {
+function generateVirtTable(sets) {
+    let virtSetTable = [];
     let tempRow = [];
     for (let i = 0; i < sets.length; i++) {
         if (tempRow.push(sets[i]) == 3) {
@@ -22,9 +22,10 @@ function generateVirtTable() {
         }
     };
     if (tempRow.length > 0) virtSetTable.push(tempRow);
+    return virtSetTable;
 }
 
-function createSetGrid() {
+function createSetGrid(virtSetTable) {
     if (virtSetTable.length < 0) {
         createElem("p", document.getElementById("setGrid"), "You have no sets", { "class": "noSets" });
     }
@@ -41,5 +42,6 @@ function link(elem) {
     window.location.assign("./sets.html?set=" + elem.innerText);
 }
 
-generateVirtTable();
-createSetGrid();
+setsPromise.then((sets) => {
+    createSetGrid(generateVirtTable(sets));
+});

@@ -1,8 +1,8 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
-const { contextBridge } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 const fs = require("fs");
-userdata = require("./userdata.json");
+const path = require('path');
 
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector, text) => {
@@ -16,9 +16,8 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 contextBridge.exposeInMainWorld("dataLoader", {
-  getUserData: () => { return userdata },
+  getUserData: () => ipcRenderer.invoke('request-userdata'),
   setLastOpened: (setName) => {
-    userdata.metadata["last-opened"] = setName;
-    fs.writeFileSync("./userdata.json", JSON.stringify(userdata));
+    ipcRenderer.send('last-opened', setName);
   }
-})
+});

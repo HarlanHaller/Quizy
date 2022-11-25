@@ -1,4 +1,4 @@
-const userdata = window.dataLoader.getUserData();
+const userdataPromise = window.dataLoader.getUserData();
 const lastOpened = document.getElementById("suggested");
 
 function createElem(type, parent, Text, attributes) {
@@ -16,5 +16,6 @@ function link(elem) {
     window.location.assign("./sets.html?set=" + elem.innerText);
 }
 
-console.log(userdata.metadata['last-opened'])
-createElem("div", lastOpened, userdata.metadata["last-opened"]).addEventListener("click", e => { link(e.srcElement) });
+userdataPromise.then((userdata) => {
+    createElem("div", lastOpened, userdata.metadata["last-opened"]).addEventListener("click", e => { link(e.srcElement) });
+});

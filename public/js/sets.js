@@ -1,9 +1,12 @@
-const userdata = window.dataLoader.getUserData();
+const userdataPromise = window.dataLoader.getUserData();
 const setName = window.location.search.split("?set=")[1];
-const set = createNameToSet()[setName];
-const index = userdata.sets.findIndex((e) => { return e === set })
+var set, index;
+userdataPromise.then((userdata) => {
+    set = createNameToSet(userdata)[setName];
+    index = userdata.sets.findIndex((e) => { return e === set })
+});
 
-function createNameToSet() {
+function createNameToSet(userdata) {
     let temp = {};
     for (let i of userdata.sets) {
         temp[i.metadata.name] = i;

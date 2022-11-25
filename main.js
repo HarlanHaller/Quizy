@@ -1,8 +1,9 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, MessageChannelMain, session } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { dirname } = require('path');
 const path = require('path');
-const userdata = require("./userdata.json");
+const fs = require("fs");
+var userdata = {};
 
 let mainWindow;
 
@@ -21,6 +22,12 @@ function createWindow() {
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
+
+	userdata = fs.existsSync(path.join(app.getAppPath(), "userdata.json")) ? require(path.join(app.getAppPath(), "userdata.json")) : require("./inituserdata.json");
+
+	ipcMain.handle('request-userdata', (e) => {
+		return userdata;
+	});
 }
 
 // This method will be called when Electron has finished
@@ -35,10 +42,10 @@ app.whenReady().then(() => {
 		if (BrowserWindow.getAllWindows().length === 0) createWindow();
 	});
 
-	// session.defaultSession.webRequest.onBeforeSendHeaders({ urls: [`file://${__dirname}/public/views/*`] }, (details, callback) => {
-	// 	console.log(details.url.split("?set="));
-	// 	callback({});
-	// })
+	ipcMain.on('last-set', (e, setName) => {
+		userdata.metadata["last-opened"] = setName;
+	});
+
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
