@@ -1,6 +1,5 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { dirname } = require('path');
 const path = require('path');
 const fs = require("fs");
 var userdata = {};
@@ -23,7 +22,9 @@ function createWindow() {
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
 
-	userdata = fs.existsSync(path.join(app.getAppPath(), "userdata.json")) ? require(path.join(app.getAppPath(), "userdata.json")) : require("./inituserdata.json");
+	userdata = fs.existsSync(path.join(app.getPath('userData'), "userdata.json")) ?
+		require(path.join(app.getPath('userData'), "userdata.json")) :
+		require("./inituserdata.json");
 
 	ipcMain.handle('request-userdata', (e) => {
 		return userdata;
@@ -42,8 +43,8 @@ app.whenReady().then(() => {
 		if (BrowserWindow.getAllWindows().length === 0) createWindow();
 	});
 
-	ipcMain.on('last-set', (e, setName) => {
-		userdata.metadata["last-opened"] = setName;
+	ipcMain.on('last-opened', (e, setName) => {
+		// userdata.metadata["last-opened"] = setName;
 	});
 
 });
@@ -57,3 +58,6 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+app.on('before-quit', (e) => {
+	// fs.writeFileSync(path.join(app.getPath('userData'), "userdata.json"), JSON.stringify(userdata));
+})

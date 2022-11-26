@@ -15,5 +15,4 @@ function createNameToSet(userdata) {
 }
 
 document.getElementById("setTitle").innerText = setName;
-console.log(typeof (setName))
 window.dataLoader.setLastOpened(setName);

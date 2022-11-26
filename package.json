@@ -7,7 +7,8 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "clean": "rimraf out"
+    "clean": "rimraf out",
+    "clean-dev-only": "rimraf '/Users/harlanhaller/Library/Application Support/Quizy/userdata.json'"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [],
