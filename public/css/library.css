@@ -1,8 +1,17 @@
+:root {
+	--lightgray: rgb(218, 219, 220);
+	--accent: #3898ec;
+	--backgroundGray: rgb(246, 247, 251);
+	--lightblue: rgb(188, 210, 242);
+	overflow-y: hidden;
+}
+
 h3 {
 	text-align: center;
 	font-size: 3rem;
 	margin-top: 10px;
 	margin-bottom: 5px;
+	font-weight: 500;
 }
 
 table {
@@ -21,6 +30,10 @@ td {
 	min-width: 200px;
 	cursor: pointer;
 	height: 200px;
+}
+
+td:hover {
+	color: var(--accent);
 }
 
 td a {

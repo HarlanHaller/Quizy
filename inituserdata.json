@@ -26,7 +26,8 @@
                 "term20": "definition"
             },
             "metadata": {
-                "name": "prototype"
+                "name": "prototype",
+                "studied": []
             }
         },
         {
@@ -34,7 +35,8 @@
                 "term": "definition"
             },
             "metadata": {
-                "name": "prototype1"
+                "name": "prototype1",
+                "studied": []
             }
         },
         {
@@ -42,7 +44,8 @@
                 "term": "definition"
             },
             "metadata": {
-                "name": "prototype2"
+                "name": "prototype2",
+                "studied": []
             }
         },
         {
@@ -50,7 +53,8 @@
                 "term": "definition"
             },
             "metadata": {
-                "name": "prototype3"
+                "name": "prototype3",
+                "studied": []
             }
         },
         {
@@ -58,7 +62,8 @@
                 "term": "definition"
             },
             "metadata": {
-                "name": "prototype4"
+                "name": "prototype4",
+                "studied": []
             }
         }
     ],

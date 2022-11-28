@@ -32,13 +32,19 @@
                         "default": {},
                         "title": "The metadata Schema",
                         "required": [
-                            "name"
+                            "name",
+                            "studied"
                         ],
                         "properties": {
                             "name": {
                                 "type": "string",
                                 "default": "mySet",
                                 "title": "The name of the set"
+                            },
+                            "studied": {
+                                "type": "array",
+                                "default": [],
+                                "title": "the studied cards"
                             }
                         },
                         "examples": [

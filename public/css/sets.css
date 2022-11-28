@@ -1,13 +1,15 @@
 :root {
 	--lightgray: rgb(218, 219, 220);
 	--accent: #3898ec;
-	--lightgray: rgb(246, 247, 251);
+	--backgroundGray: rgb(246, 247, 251);
+	--lightblue: rgb(188, 210, 242);
 }
 
 h3 {
 	text-align: center;
 	font-size: 3rem;
 	margin: 10px 0;
+	font-weight: 500;
 }
 
 .setnav {
@@ -29,4 +31,63 @@ h3 {
 
 .setnav button:hover {
 	background-color: var(--accent);
+}
+
+#termList {
+	overflow-y: scroll;
+	position: absolute;
+	bottom: 60px;
+	left: 15%;
+	width: 70%;
+	height: 60vh;
+	/* margin: 150px auto 0; */
+}
+
+#termList::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+#termList::-webkit-scrollbar-track {
+	background: var(--lightgray);
+}
+
+/* Handle */
+#termList::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+#termList::-webkit-scrollbar-thumb:hover {
+	background: var(--accent);
+}
+
+.term {
+	display: flex;
+	align-items: center;
+	margin: 0 0 10px 0;
+	background-color: #fff;
+	border-radius: 5px;
+	height: 40px;
+	padding-left: 20px;
+}
+
+.term p,
+.termHeader p {
+	margin: 0 10px;
+}
+
+.termHeader {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	/* justify-content: space-around; */
+	bottom: calc(60px + 60%);
+	width: calc(70% - 20px);
+	left: 15%;
+	height: 40px;
+	margin: 0 0 10px 0;
+	background-color: var(--lightgray);
+	border-radius: 5px;
+	padding-left: 20px;
 }

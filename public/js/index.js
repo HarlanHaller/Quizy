@@ -17,5 +17,5 @@ function link(elem) {
 }
 
 userdataPromise.then((userdata) => {
-    createElem("div", lastOpened, userdata.metadata["last-opened"]).addEventListener("click", e => { link(e.srcElement) });
+    createElem("p", lastOpened, userdata.metadata["last-opened"], { "class": "lastOpened" }).addEventListener("click", e => { link(e.srcElement) });
 });
