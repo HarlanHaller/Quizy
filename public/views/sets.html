@@ -31,13 +31,20 @@
             <a>Learn</a>
         </div>
 
-        <div class="termHeader">
-            <p>Terms:</p>
-            <p>Definition: </p>
-            <p>Studied?</p>
-            <p>Stared</p>
+        <div class="set-info">
+            <h4>Terms in this set: </h4>
+            <div>
+                <h4>Short by: </h4>
+                <select id="sortOptions">
+                    <option>Stats</option>
+                    <option>Alphabetically</option>
+                    <option>Original</option>
+                </select>
+            </div>
         </div>
-        <div id="termList"></div>
+
+        <div id="termList">
+        </div>
 
         <p class="version_box">We are using Node.js <span id="node-version"></span>,
             Chromium <span id="chrome-version"></span>,

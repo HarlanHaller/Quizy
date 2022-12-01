@@ -5,10 +5,19 @@
 	--lightblue: rgb(188, 210, 242);
 }
 
+body {
+	padding-bottom: 100px;
+}
+
 h3 {
 	text-align: center;
 	font-size: 3rem;
 	margin: 10px 0;
+	font-weight: 500;
+}
+
+h4 {
+	font-size: 1.5em;
 	font-weight: 500;
 }
 
@@ -23,7 +32,7 @@ h3 {
 	border: none;
 	border-radius: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	background-color: white;
+	background-color: #fff;
 	padding: 17px 12px;
 	margin: 0px 6px;
 	font-size: 17px;
@@ -34,60 +43,74 @@ h3 {
 }
 
 #termList {
-	overflow-y: scroll;
-	position: absolute;
-	bottom: 60px;
+	margin: 50px auto 0;
 	left: 15%;
 	width: 70%;
-	height: 60vh;
-	/* margin: 150px auto 0; */
-}
-
-#termList::-webkit-scrollbar {
-	width: 10px;
-}
-
-/* Track */
-#termList::-webkit-scrollbar-track {
-	background: var(--lightgray);
-}
-
-/* Handle */
-#termList::-webkit-scrollbar-thumb {
-	background: #888;
-}
-
-/* Handle on hover */
-#termList::-webkit-scrollbar-thumb:hover {
-	background: var(--accent);
 }
 
 .term {
 	display: flex;
-	align-items: center;
+	align-items: stretch;
 	margin: 0 0 10px 0;
 	background-color: #fff;
 	border-radius: 5px;
-	height: 40px;
-	padding-left: 20px;
+	padding: 10px;
 }
 
-.term p,
-.termHeader p {
-	margin: 0 10px;
+.term div {
+	padding-left: 10px;
+	display: flex;
+	flex-direction: column;
 }
 
-.termHeader {
+.term p {
+	margin: 10px 10px;
+	width: 250px;
+	flex-wrap: wrap;
+	overflow-wrap: break-word;
+}
+
+.term div:first-child:not(:only-of-type) {
+	border-right: 2px solid var(--lightgray);
+}
+
+.term div div {
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	border: none;
+	align-items: center;
+}
+
+.set-info {
+	display: flex;
+	justify-content: space-around;
+	width: 70%;
+	margin: 20px auto;
+	align-items: center;
+}
+
+.set-info div {
 	display: flex;
 	align-items: center;
-	position: absolute;
-	/* justify-content: space-around; */
-	bottom: calc(60px + 60%);
-	width: calc(70% - 20px);
-	left: 15%;
-	height: 40px;
-	margin: 0 0 10px 0;
-	background-color: var(--lightgray);
-	border-radius: 5px;
-	padding-left: 20px;
+}
+
+.set-info div h4 {
+	margin-right: 15px;
+}
+
+select {
+	font-size: 1.5em;
+	padding: 5px 10px;
+	font-weight: 300;
+	font-family: 'Montserrat';
+}
+
+option {
+	font-family: 'Montserrat';
+}
+
+select:focus-visible {
+	outline: none;
 }

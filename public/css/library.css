@@ -30,6 +30,7 @@ td {
 	min-width: 200px;
 	cursor: pointer;
 	height: 200px;
+	transition: ease-out 0.25s;
 }
 
 td:hover {

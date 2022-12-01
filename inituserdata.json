@@ -1,33 +1,39 @@
 {
-    "$schema": "/Users/harlanhaller/Documents/Code-folder/electron/quizy/dataSchema.json",
     "sets": [
         {
             "cards": {
-                "term0": "definition",
-                "term1": "definition",
-                "term2": "definition",
-                "term3": "definition",
-                "term4": "definition",
-                "term5": "definition",
-                "term6": "definition",
-                "term7": "definition",
-                "term8": "definition",
-                "term9": "definition",
-                "term10": "definition",
-                "term11": "definition",
-                "term12": "definition",
-                "term13": "definition",
-                "term14": "definition",
-                "term15": "definition",
-                "term16": "definition",
-                "term17": "definition",
-                "term18": "definition",
-                "term19": "definition",
-                "term20": "definition"
+                "notStudied": {
+                    "term0": "definition",
+                    "term1": "definition",
+                    "term2": "definition",
+                    "term3": "definition",
+                    "looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong": "definition",
+                    "term5": "definition",
+                    "term6": "definition",
+                    "term7": "definitionLoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+                    "term8": "definition",
+                    "term9": "definition",
+                    "term10": "definition",
+                    "term11": "definition",
+                    "term12": "definition",
+                    "term13": "definition",
+                    "term14": "definition",
+                    "term15": "definition",
+                    "term16": "definition",
+                    "term17": "definition",
+                    "term18": "definition",
+                    "term19": "definition",
+                    "term20": "definition"
+                },
+                "Studying": {
+                    "Studying": "definition"
+                },
+                "Mastered": {
+                    "Mastered": "definition"
+                }
             },
             "metadata": {
-                "name": "prototype",
-                "studied": []
+                "name": "prototype"
             }
         },
         {
@@ -35,35 +41,7 @@
                 "term": "definition"
             },
             "metadata": {
-                "name": "prototype1",
-                "studied": []
-            }
-        },
-        {
-            "cards": {
-                "term": "definition"
-            },
-            "metadata": {
-                "name": "prototype2",
-                "studied": []
-            }
-        },
-        {
-            "cards": {
-                "term": "definition"
-            },
-            "metadata": {
-                "name": "prototype3",
-                "studied": []
-            }
-        },
-        {
-            "cards": {
-                "term": "definition"
-            },
-            "metadata": {
-                "name": "prototype4",
-                "studied": []
+                "name": "prototype1"
             }
         }
     ],

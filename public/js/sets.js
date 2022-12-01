@@ -2,6 +2,15 @@ const userdataPromise = window.dataLoader.getUserData();
 const setName = window.location.search.split("?set=")[1];
 var set, index;
 
+document.getElementById("sortOptions").addEventListener("change", function () {
+    console.log(this.value);
+    //TODO implement alternate sorting methods
+})
+
+function objLen(obj) {
+    return Object.keys(obj).length;
+}
+
 function createElem(type, parent, Text, attributes) {
     Text = Text || "";
     let elem = document.createElement(type)
@@ -21,11 +30,10 @@ function getSet(userdata, setName) {
 }
 
 function generateTermList(terms, definitions) {
-    // let header = createElem("div", document.getElementById("termList"), "", { "class": "term termHeader" });
-    // createElem("p", header, "Terms:");
     for (let i = 0; i < terms.length; i++) {
         let row = createElem("div", document.getElementById("termList"), "", { "class": "term" });
-        createElem("p", row, terms[i]);
+        createElem("p", createElem("div", createElem("div", row)), terms[i]);
+        createElem("p", createElem("div", createElem("div", row)), definitions[i])
     }
 }
 
@@ -38,7 +46,19 @@ userdataPromise.then((userdata) => {
         return;
     }
     index = userdata.sets.findIndex((e) => { return e === set })
-    generateTermList(Object.keys(set.cards), Object.values(set.cards));
+    let termList = document.getElementById("termList")
+    if (objLen(set.cards.notStudied) > 0) {
+        createElem("h4", createElem("div", termList, "", { "class": "subheader" }), `Not Studied (${objLen(set.cards.notStudied)})`);
+        generateTermList(Object.keys(set.cards.notStudied), Object.values(set.cards.notStudied));
+    }
+    if (objLen(set.cards.Studying) > 0) {
+        createElem("h4", createElem("div", termList, "", { "class": "subheader" }), `Studying (${objLen(set.cards.Studying)})`);
+        generateTermList(Object.keys(set.cards.Studying), Object.values(set.cards.Studying));
+    }
+    if (objLen(set.cards.Mastered) > 0) {
+        createElem("h4", createElem("div", termList, "", { "class": "subheader" }), `Mastered (${objLen(set.cards.Mastered)})`);
+        generateTermList(Object.keys(set.cards.Mastered), Object.values(set.cards.Mastered));
+    }
 });
 
 document.getElementById("setTitle").innerText = setName;
