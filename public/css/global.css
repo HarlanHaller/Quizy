@@ -38,6 +38,7 @@ body {
 }
 
 .navContainer {
+	width: 100%;
 	height: 80px;
 	display: flex;
 	align-items: center;
@@ -53,7 +54,8 @@ body {
 
 /* Add a black background color to the top navigation */
 .topnav {
-	align-items: center;
+	padding-top: 20px;
+	align-items: flex-start;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -77,29 +79,37 @@ body {
 	color: black;
 }
 
-/* .topnav div {
-	display: flex;
+.topnav div {
+	display: grid;
+	grid-template-rows: 80% 4px;
 	height: 70%;
-	flex-direction: column;
-} */
-
-/* Add a color to the active/current link */
-.topnav div::after {
-	display: block;
-	content: '';
-	width: 10%;
-	height: 4px;
-	border-radius: 5px;
-	background-color: var(--lightgray);
-	transition: ease-out 0.5s;
+	row-gap: 0;
 }
 
-.topnav div:hover::after {
+.topnav div div {
+	grid-area: 2 / 1 / 2 / 1;
+	transition: ease-out 0.3s;
+	height: 4px;
+	border-radius: 5px;
+}
+
+.topnav div div:last-child {
+	background-color: var(--lightgray);
+	width: 100%;
+	z-index: 2;
+}
+
+.topnav div div:nth-child(2) {
 	background-color: var(--accent);
+	width: 0;
+	z-index: 3;
+}
+
+.topnav div:hover div:nth-child(2) {
 	width: 100%;
 }
 
-.topnav div.active::after {
+.topnav div.active div {
 	display: block;
 	content: '';
 	width: 100%;

@@ -1,0 +1,264 @@
+:root {
+	--lightgray: rgb(218, 219, 220);
+	--accent: #3898ec;
+	--backgroundGray: rgb(246, 247, 251);
+	--lightblue: rgb(188, 210, 242);
+}
+
+body {
+	overflow: hidden;
+	--card-width: 60vw;
+	--card-height: calc(100vh - 166px - 50px);
+	--ggs: 1.7;
+	--ggs2: 1.2;
+}
+
+h3 {
+	text-align: center;
+	font-size: 3rem;
+	margin: 10px 0;
+	font-weight: 500;
+	overflow-wrap: break-word;
+	overflow-y: auto;
+	max-height: inherit;
+	max-width: inherit;
+}
+
+.back-container {
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.back {
+	box-sizing: border-box;
+	padding: 0 15px;
+	border: 2px solid var(--lightgray);
+	border-radius: 100px;
+	display: flex;
+	width: 150px;
+	justify-content: center;
+	align-items: center;
+}
+
+.back:hover {
+	border-color: var(--accent);
+}
+
+.back-container h3 {
+	font-size: 1.5rem;
+	padding-left: 15px;
+}
+
+.animations {
+	/* animation-play-state: paused;
+	animation: slide-in-right 0.6s ease-out both, slide-in-left 0.6s ease-out both;
+	animation-name: slide-in-right, slide-in-left;
+	animation-timing-function: ease-out, ease-out;
+	animation-duration: 0.6s, 0.6s;
+	animation-fill-mode: both, both; */
+}
+
+.flip-card-container {
+	display: flex;
+	width: 100%;
+	margin-top: 40px;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+	background-color: transparent;
+	width: var(--card-width);
+	height: var(--card-height);
+	perspective: 1000px; /* Remove this if you don't want the 3D effect */
+	min-height: 216px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.4s;
+	transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flipped .flip-card-inner {
+	transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+	background-color: #fff;
+}
+
+/* Style the back side */
+.flip-card-back {
+	transform: rotateY(180deg);
+}
+
+.card-content-wrapper {
+	box-sizing: border-box;
+	width: var(--card-width);
+	height: var(--card-height);
+	padding: 20px;
+	display: grid;
+	grid-template-rows: 40px auto 60px;
+}
+
+.which-card {
+	margin: 0;
+	padding: 0;
+	font-weight: 500;
+	width: fit-content;
+	grid-area: 1/1/1/1;
+}
+
+.content {
+	max-width: calc(var(--card-width) - 40px);
+	max-height: calc(var(--card-height) - 40px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	overflow-y: auto;
+	grid-area: 2/1/2/1;
+}
+
+.content h3 {
+	max-height: (var(--card-height) - 40px - 100px);
+	margin: 0;
+}
+
+.nav-buttons {
+	display: flex;
+	grid-area: 3/1/3/1;
+}
+
+.nav-buttons div {
+	border: 2px solid var(--lightgray);
+	border-radius: 5px;
+	height: 40px;
+	width: 50%;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-buttons div:hover {
+	border-color: #000;
+}
+
+@keyframes slide-in-right {
+	0% {
+		transform: translateX(1000px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-in-left {
+	0% {
+		transform: translateX(-1000px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.gg-arrow-long-left {
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	transform: scale(var(--ggs, 1));
+	border-top: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+	box-shadow: inset 0 0 0 2px;
+	width: 24px;
+	height: 6px;
+}
+
+.gg-arrow-long-left::after {
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	border-bottom: 2px solid;
+	border-left: 2px solid;
+	transform: rotate(45deg);
+	left: 0;
+	bottom: -2px;
+}
+
+.gg-arrow-long-right {
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	transform: scale(var(--ggs, 1));
+	border-top: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+	box-shadow: inset 0 0 0 2px;
+	width: 24px;
+	height: 6px;
+}
+
+.gg-arrow-long-right::after {
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	border-top: 2px solid;
+	border-right: 2px solid;
+	transform: rotate(45deg);
+	right: 0;
+	bottom: -2px;
+}
+
+.gg-chevron-left-o {
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	transform: scale(var(--ggs2, 1));
+	width: 22px;
+	height: 22px;
+	border: 2px solid;
+	border-radius: 100px;
+}
+
+.gg-chevron-left-o::after {
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	border-bottom: 2px solid;
+	border-left: 2px solid;
+	transform: rotate(45deg);
+	left: 7px;
+	top: 6px;
+}

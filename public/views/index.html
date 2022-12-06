@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <title>Quizy</title>
-    <script type="javascript" id="loader"></script>
-  </head>
-  <body>
-    <div class="navContainer">
-      <div class="topnav">
-        <h1 class="heading">Quizy</h1>
-        <div class="active">
-          <a>Home</a>
+    <head>
+        <meta charset="UTF-8">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <link rel="stylesheet" href="../css/global.css">
+        <link rel="stylesheet" href="../css/index.css">
+        <title>Quizy</title>
+        <script type="javascript" id="loader"></script>
+    </head>
+    <body>
+        <div class="navContainer">
+            <div class="topnav">
+                <h1 class="heading">Quizy</h1>
+                <div class="active">
+                    <a>Home</a>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+                    <a href="./library.html">Library</a>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+                    <a>Create</a>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
         </div>
-        <div>
-          <a href="./library.html">Library</a>
+        <div class="buttonContainer">
+            <a class="button space-right" href="./library.html">Your Sets</a>
+            <a class="button space-left">Create Sets</a>
         </div>
-        <div>
-          <a>Create</a>
-        </div>
-      </div>
-    </div>
-    <div class="buttonContainer">
-      <a class="button spaceright" href="./library.html">Your Sets</a>
-      <a class="button spaceleft">Create Sets</a>
-    </div>
 
-    <div id="suggested">
-      <h3>Last Opened: </h3>
-    </div>
+        <div id="suggested">
+            <h3>Last Opened: </h3>
+        </div>
 
-    <p class="version_box">We are using Node.js <span id="node-version"></span>,
-      Chromium <span id="chrome-version"></span>,
-      and Electron <span id="electron-version"></span>.
-    </p>
-    <script src="../js/index.js"></script>
-  </body>
+        <p class="version_box">We are using Node.js <span id="node-version"></span>,
+            Chromium <span id="chrome-version"></span>,
+            and Electron <span id="electron-version"></span>.
+        </p>
+        <script src="../js/index.js"></script>
+    </body>
 </html>

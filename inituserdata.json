@@ -25,10 +25,10 @@
                     "term19": "definition",
                     "term20": "definition"
                 },
-                "Studying": {
+                "studying": {
                     "Studying": "definition"
                 },
-                "Mastered": {
+                "mastered": {
                     "Mastered": "definition"
                 }
             },
@@ -38,12 +38,40 @@
         },
         {
             "cards": {
-                "term": "definition"
+                "notStudied": {
+                "term0": "definition",
+                "term1": "definition",
+                "term2": "definition",
+                "term3": "definition",
+                "looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong": "definition",
+                "term5": "definition",
+                "term6": "definition",
+                "term7": "definitionLoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+                "term8": "definition",
+                "term9": "definition",
+                "term10": "definition",
+                "term11": "definition",
+                "term12": "definition",
+                "term13": "definition",
+                "term14": "definition",
+                "term15": "definition",
+                "term16": "definition",
+                "term17": "definition",
+                "term18": "definition",
+                "term19": "definition",
+                "term20": "definition"
             },
-            "metadata": {
-                "name": "prototype1"
+            "studying": {
+                "Studying": "definition"
+            },
+            "mastered": {
+                "Mastered": "definition"
             }
+        },
+        "metadata": {
+            "name": "prototype1"
         }
+    }
     ],
     "metadata": {
         "last-opened": "prototype"

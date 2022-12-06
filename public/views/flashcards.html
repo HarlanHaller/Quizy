@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <link rel="stylesheet" href="../css/global.css">
+        <link rel="stylesheet" href="../css/flashcards.css">
+        <title>Quizy</title>
+    </head>
+    <body>
+        <div class="navContainer">
+            <div class="topnav">
+                <h1 class="heading">Quizy</h1>
+                <div>
+                    <a href="./index.html">Home</a>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+                    <a href="./library.html" >Library</a>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+                    <a>Create</a>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <div class="back-container">
+                <div class="back">
+                    <i class="gg-chevron-left-o"></i>
+                    <h3 id="back">back</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="flip-card-container">
+            <div class="flip-card animations" id="card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-content-wrapper">
+                            <p class="which-card">Term</p>
+                            <div class="content">
+                                <h3 id="term"></h3>
+                            </div>
+                            <div class="nav-buttons" >
+                                <div class="leftArrow">
+                                    <i class="gg-arrow-long-left" ></i>
+                                </div>
+                                <div class="rightArrow">
+                                    <i class="gg-arrow-long-right" ></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-content-wrapper">
+                            <p class="which-card">Definition</p>
+                            <div class="content">
+                                <h3 id="definition"></h3>
+                            </div>
+                            <div class="nav-buttons" >
+                                <div class="leftArrow">
+                                    <i class="gg-arrow-long-left" ></i>
+                                </div>
+                                <div class="rightArrow">
+                                    <i class="gg-arrow-long-right" ></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="version_box">We are using Node.js <span id="node-version"></span>,
+            Chromium <span id="chrome-version"></span>,
+            and Electron <span id="electron-version"></span>.
+        </p>
+        <script src="../js/flashcards.js"></script>
+    </body>
+</html>
