@@ -56,7 +56,6 @@ const flipCard = (e) => {
     }
 }
 
-$('card').addEventListener('click', function (e) { flipCard(e) });
 
 document.addEventListener('keydown', (e) => {
     switch (e.key) {
@@ -74,9 +73,10 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-
+$('card').addEventListener('click', function (e) { flipCard(e) });
 Array.from($class('rightArrow')).forEach((e) => e.addEventListener('click', () => { rightArrow(e, 300) }));
 Array.from($class('leftArrow')).forEach((e) => e.addEventListener('click', () => { leftArrow(e, 300) }));
+$('back').addEventListener('click', () => { link(`./sets.html?set=${setName}`) })
 
 function $(id) {
     return document.getElementById(id);
@@ -107,6 +107,10 @@ function renderTerm() {
     termIndex = termIndex >= 0 ? (termIndex >= termList.length ? 0 : termIndex) : termList.length - 1;
     $('term').innerText = termList[termIndex][0];
     $('definition').innerText = termList[termIndex][1];
+}
+
+function link(href) {
+    window.location.assign(href)
 }
 
 userdataPromise.then((userdata) => {
