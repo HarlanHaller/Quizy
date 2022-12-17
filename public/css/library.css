@@ -3,6 +3,9 @@
 	--accent: #3898ec;
 	--backgroundGray: rgb(246, 247, 251);
 	--lightblue: rgb(188, 210, 242);
+}
+
+body {
 	overflow-y: hidden;
 }
 

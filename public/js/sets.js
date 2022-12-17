@@ -13,7 +13,7 @@ $("sortOptions").addEventListener("change", function () {
 })
 
 $("Flashcards").addEventListener("click", () => link(`./flashcards.html?set=${setName}`));
-// $("Learn").addEventListener("click", link(`./learn.html?set=${setName}`));
+$("Learn").addEventListener("click", () => link(`./learn.html?set=${setName}`));
 
 function objLen(obj) {
     return Object.keys(obj).length;
