@@ -1,5 +1,6 @@
 const userdataPromise = window.dataLoader.getUserData();
 const setName = window.location.search.split('?set=')[1];
+var study = (term) => { }, master = (term) => { };
 var set, index, correct = 1, termIndex = 0, termList = [], active = true;
 
 const colors = {
@@ -8,6 +9,26 @@ const colors = {
     incorrectColor: "red",
     textIncorrectColor: "rgb(186, 0, 0)",
     defaultColor: ""
+}
+
+const animations = {
+    popupIn: {
+        keyframes: [
+            {
+                transform: 'translateY(400px)',
+                opacity: 0
+            },
+            {
+                transform: 'translateY(0)',
+                opacity: 1
+            }
+        ],
+        timing: {
+            duration: 500,
+            iterations: 1,
+            easing: 'ease-out'
+        }
+    }
 }
 
 function deactivate() {
@@ -20,7 +41,7 @@ function activate() {
     Array.from($class("button")).forEach(e => e.style.color = "")
 }
 
-function populateValues() {
+function populateValuesButtons() {
     $('term').innerText = termList[termIndex][0];
     let indexes = drawRandoms(termList.length - 1, termIndex);
     // let indexes = [1, 2, 3, 4]
@@ -44,35 +65,21 @@ function markIncorrect(button) {
 function answerButton(value) {
     if (!active) return;
     termIndex++;
-    //correct
     deactivate();
     if (value == correct + 1) {
+        //correct
         markCorrect($(`answer${value}`));
         setTimeout(() => {
-            populateValues();
+            populateValuesButtons();
         }, 1000)
     } else {
-        console.log("wrong")
+        //incorrect
         markCorrect($(`answer${correct + 1}`));
         markIncorrect($(`answer${value}`));
-        $('popupCon').style.display = "flex"
+        $('popupCon').style.display = "flex";
         $('popupCon').animate(
-            [
-                {
-                    transform: 'translateY(400px)',
-                    opacity: 0
-                },
-                {
-                    transform: 'translateY(0)',
-                    opacity: 1
-                }
-            ],
-            {
-                duration: 500,
-                iterations: 1,
-                easing: 'ease-out'
-            }
-        )
+            animations.popupIn.keyframes,
+            animations.popupIn.timing);
     }
 }
 
@@ -117,7 +124,9 @@ function $class(className) {
 }
 
 $('back').addEventListener('click', () => { link(`./sets.html?set=${setName}`) });
-$('popup').addEventListener('click', () => { $('popupCon').style.display = "none"; populateValues(); })
+$('popup').addEventListener('click', () => { $('popupCon').style.display = "none"; populateValuesButtons(); });
+$('activateOptions').addEventListener('click', () => { $('options').style.display = "flex" })
+$('exit').addEventListener('click', () => { $('options').style.display = "none" })
 
 for (let i = 1; i <= 4; i++) {
     $(`answer${i}`).addEventListener('click', function () { answerButton(this.id[this.id.length - 1]) })
@@ -134,6 +143,11 @@ userdataPromise.then((userdata) => {
     index = userdata.sets.findIndex((e) => {
         return e === set;
     });
+    console.log(set)
+
+    study = (term, definition) => { set.cards.studying[term] = definition }
+    mastered = (term, definition) => { set.cards.mastered[term] = definition }
+
     termList = genTermArr(set);
-    populateValues();
+    populateValuesButtons();
 });

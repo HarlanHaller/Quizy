@@ -44,19 +44,32 @@
         <div class="learn-card-container">
             <div class="learn-card">
                 <div class="top-items">
-                    <!-- <i class="star"></i> -->
+                    <div class="option-activate" id="activateOptions"></div>
                 </div>
                 <div class="content">
                     <h3 id="term">Loading :)</h3>
                 </div>
                 <div class="bottom-items">
-                    <div class="button-container">
-                        <div class="button" id="answer1"></div>
-                        <div class="button" id="answer2"></div>
+                    <div class="buttons" id="buttons">
+                        <div class="button-container">
+                            <div class="button" id="answer1"></div>
+                            <div class="button" id="answer2"></div>
+                        </div>
+                        <div class="button-container">
+                            <div class="button" id="answer3"></div>
+                            <div class="button" id="answer4"></div>
+                        </div>
                     </div>
-                    <div class="button-container">
-                        <div class="button" id="answer3"></div>
-                        <div class="button" id="answer4"></div>
+                    <div class="writing-items">
+                        <form class="form">
+                            <div class="text-container">
+                                <input type="text" placeholder="Type away" autocomplete="false" autocapitalize="false" spellcheck="false">
+                            </div>
+                            <div class="writing-buttons">
+                                <input type="button" value="Don't know">
+                                <input type="submit">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -64,6 +77,20 @@
 
         <div class="popup" id="popupCon">
             <div class="popup-button" id="popup">Next</div>
+        </div>
+
+        <div class="options-container" id="options">
+            <div class="options">
+                <div>
+                    <h4>Options</h4>
+                    <div class="exit-container" id="exit">
+                        <i class="gg-add"></i>
+                    </div>
+                </div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
 
         <p class="version_box">We are using Node.js <span id="node-version"></span>,

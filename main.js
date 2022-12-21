@@ -14,7 +14,9 @@ function createWindow() {
         height: 1600,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
-        }
+        },
+        minWidth: 900,
+        minHeight: 800,
     });
 
     // and load the index.html of the app.

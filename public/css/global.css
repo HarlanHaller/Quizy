@@ -38,7 +38,7 @@ body {
 }
 
 body {
-	font-family: 'Montserrat';
+	font-family: 'Montserrat', monospace;
 	padding: 0;
 	margin: 0;
 	background-color: var(--backgroundGray);
