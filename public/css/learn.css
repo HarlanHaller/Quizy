@@ -9,6 +9,7 @@
 	--learn-card-width: 50vw;
 	--button-transition-time: 0.15s;
 	--options-gear-size: 20px;
+    --accent-hover: #77b4e8;
 }
 
 @font-face {
@@ -18,9 +19,10 @@
 
 body {
 	overflow-y: hidden;
+    --text-enabled: var(--accent);
 }
 
-.navContainer {
+.navContainer, .size-nav {
 	box-shadow: unset;
 	margin-bottom: unset;
 }
@@ -54,6 +56,10 @@ h3 {
 }
 
 .back-container {
+	-webkit-app-region: no-drag;
+	position: absolute;
+	top: 12px;
+	right: 40px;
 	cursor: pointer;
 	margin-left: auto;
 	margin-right: 35px;
@@ -66,12 +72,13 @@ h3 {
 	transition: var(--button-transition-time);
 	box-sizing: border-box;
 	padding: 0 15px;
-	border: 2px solid var(--lightgray);
+	border: 2px solid black;
 	border-radius: 100px;
 	display: flex;
 	width: 150px;
 	justify-content: center;
 	align-items: center;
+    cursor: pointer;
 }
 
 .back:hover {
@@ -98,6 +105,7 @@ h3 {
 	height: min-content;
 	max-height: 80vh;
 	overflow-y: auto;
+    overflow-x: hidden;
 	min-width: 480px;
 	max-width: 900px;
 	background-color: #fff;
@@ -119,21 +127,21 @@ h3 {
 	display: none;
 	margin: 0;
 	padding: 0;
-	display: none;
 }
 
 .writing-items {
+    /* display: none; */
 	box-sizing: border-box;
 	min-height: 120px;
 }
 
 .text-container {
 	margin: 0 auto;
-	height: 30px;
 	width: 90%;
 	background: var(--lightgray);
-	padding: 10px 20px 0;
+	padding: 10px 20px 6px;
 	border-radius: 10px;
+    border: 2px solid transparent;
 }
 
 .text-container::after {
@@ -144,7 +152,35 @@ h3 {
 }
 
 .text-container:where(:focus-within, :hover)::after {
-	background-color: #3898ec;
+	background-color: var(--text-enabled);
+}
+
+.text-container:has(.text-display) {
+    border-color: rgb(13, 216, 13);
+    background-color: rgba(75 241 75 / 49%);
+}
+
+.text-display {
+    color: rgb(9, 164, 9);
+}
+
+.text-container:has(.text-display)::after {
+    display: none;
+}
+
+.text-container > div {
+    margin: 0 auto;
+	background-color: transparent;
+	box-sizing: border-box;
+	border: none;
+	width: 100%;
+	margin-bottom: 3px;
+    padding: 1px 2px;
+    line-break: anywhere;
+}
+
+#correctTextContainer > p {
+    margin: 1rem 14px 0.5rem;
 }
 
 input[type="text"] {
@@ -154,11 +190,11 @@ input[type="text"] {
 	border: none;
 	width: 100%;
 	font-family: Montserrat, monospace;
-	margin-bottom: auto;
+	margin-bottom: 3px;
 }
 
 input[type="text"]:focus-visible {
-	outline: none;
+    outline: none;
 }
 
 .writing-buttons {
@@ -168,27 +204,34 @@ input[type="text"]:focus-visible {
 	margin: 20px 1% 0 auto;
 }
 
-input[type="submit"] {
-	width: 70px;
-	height: 30px;
+
+.submit {
+	width: 90px;
+	height: 40px;
 	background-color: var(--accent);
 	border: none;
 	border-radius: 7px;
 	margin-left: 20px;
+    cursor: pointer;
+    color: white;
+    outline-color:black;
 }
 
-input[type="submit"]:hover {
-	color: white;
+.submit:hover {
+    background-color: var(--accent-hover);
 }
 
-input[type="button"] {
-	background-color: transparent;
+
+.i-button {
+    cursor: pointer;
+	background-color: rgb(239, 239, 239);
 	border: 1px solid black;
 	transition: var(--button-transition-time);
 	border-radius: 7px;
+    width: 90px;
 }
 
-input[type="button"]:hover {
+.i-button:hover {
 	border-color: var(--accent);
 	color: var(--accent);
 }
@@ -205,12 +248,22 @@ input[type="button"]:hover {
 	height: min-content;
 	cursor: pointer;
 	height: 20px;
-	padding-right: 10px;
+    padding-right: 10px;
+}
+
+.option-activate:hover::after {
+    transform: rotate(360deg);
 }
 
 .option-activate::after {
+    transform-origin: 50% 68%;
+    display: block;
+    transition: 0.25s;
 	content: "\2699";
-	height: 10px;
+	height: 15px;
+    width: 14px;
+    text-align: center;
+    margin-top: -3px;
 }
 
 .option-activate:hover::after {
@@ -317,7 +370,7 @@ input[type="button"]:hover {
 }
 
 .popup-button {
-	background-color: rgb(11, 94, 219);
+	background-color: var(--accent);
 	color: white;
 	width: min-content;
 	padding: 5px 10px;
@@ -327,7 +380,7 @@ input[type="button"]:hover {
 }
 
 .popup-button:hover {
-	background-color: var(--accent);
+	background-color: var(--accent-hover);
 }
 
 .options-container {

@@ -9,6 +9,7 @@
         <title>Quizy</title>
     </head>
     <body>
+        <div class="size-nav"></div>
         <div class="navContainer">
             <div class="topnav">
                 <h1 class="heading">Quizy</h1>
@@ -28,15 +29,15 @@
                     <div></div>
                 </div>
             </div>
-
-            <div class="back-container">
-                <div class="back">
+            <div class="back-container" id="back">
+                <button class="back">
                     <i class="gg-chevron-left-o"></i>
-                    <h3 id="back">back</h3>
-                </div>
+                    <h3>back</h3>
+                </button>
             </div>
         </div>
-
+        
+        
         <div class="progress-container">
             <div id="progress" class="progress"></div>
         </div>
@@ -61,22 +62,28 @@
                         </div>
                     </div>
                     <div class="writing-items">
-                        <form class="form">
+                        <div class="form">
                             <div class="text-container">
-                                <input type="text" placeholder="Type away" autocomplete="false" autocapitalize="false" spellcheck="false">
+                                <input id="text" type="text" placeholder="Type away" autocomplete="false" autocapitalize="false" spellcheck="false">
                             </div>
-                            <div class="writing-buttons">
-                                <input type="button" value="Don't know">
-                                <input type="submit">
+                            <div class="writing-buttons" id="writingButtons">
+                                <button class="i-button" id="dontKnow" type="button">Don't know</button>
+                                <button class="submit" id="submit">Submit</button>
                             </div>
-                        </form>
+                            <div id="correctTextContainer">
+                                <p>Correct: </p>
+                                <div class="text-container">
+                                    <div class="text-display" id="correctText"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="popup" id="popupCon">
-            <div class="popup-button" id="popup">Next</div>
+            <button class="popup-button" id="popup">Next</button>
         </div>
 
         <div class="options-container" id="options">

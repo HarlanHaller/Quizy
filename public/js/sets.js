@@ -60,6 +60,7 @@ userdataPromise.then((userdata) => {
     }
     index = userdata.sets.findIndex((e) => { return e === set })
     let termContainer = $("termList")
+    
     if (objLen(set.cards.notStudied) > 0) {
         createElem("h4", createElem("div", termContainer, "", { "class": "subheader" }), `Not Studied (${objLen(set.cards.notStudied)})`);
         generateTermList(Object.keys(set.cards.notStudied), Object.values(set.cards.notStudied));
@@ -72,6 +73,7 @@ userdataPromise.then((userdata) => {
         createElem("h4", createElem("div", termContainer, "", { "class": "subheader" }), `Mastered (${objLen(set.cards.mastered)})`);
         generateTermList(Object.keys(set.cards.mastered), Object.values(set.cards.mastered));
     }
+    
     $('termCount').innerHTML += ` ${termList.length}`
 });
 

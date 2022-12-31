@@ -17,6 +17,7 @@ h3 {
 	background-color: var(--accent);
 	color: white;
 	text-decoration: none;
+    outline-color: black;
 }
 
 .space-left {
@@ -57,6 +58,7 @@ h3 {
 	margin: 20px 6px;
 	font-size: 2rem;
 	transition: ease-out 0.25s;
+    box-sizing: content-box;
 }
 
 .lastOpened:hover {

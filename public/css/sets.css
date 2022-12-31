@@ -29,7 +29,7 @@ h4 {
 	margin-top: 35px;
 }
 
-.setnav div {
+.setnav button {
 	border: none;
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
@@ -39,10 +39,6 @@ h4 {
 	font-size: 17px;
 	cursor: pointer;
 	width: fit-content;
-}
-
-.setnav button:hover {
-	background-color: var(--accent);
 }
 
 #termList {
@@ -72,6 +68,19 @@ h4 {
 	width: 250px;
 	flex-wrap: wrap;
 	overflow-wrap: break-word;
+}
+
+.term > div:last-child div {
+    width: auto;
+}
+
+.term > div:last-child p {
+    width: 100%;
+}
+
+.term > div:last-child {
+    min-width: 250px;
+    flex-grow: 1;
 }
 
 .term div:first-child:not(:only-of-type) {
@@ -113,8 +122,4 @@ select {
 
 option {
 	font-family: 'Montserrat';
-}
-
-select:focus-visible {
-	outline: none;
 }

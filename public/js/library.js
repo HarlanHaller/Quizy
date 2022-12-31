@@ -32,8 +32,7 @@ function createSetGrid(virtSetTable) {
     for (let row of virtSetTable) {
         let elem = createElem("tr", document.getElementById("setGrid"));
         for (let set of row) {
-            createElem("td", elem, set.metadata.name).addEventListener("click", e => { link(e.srcElement) });
-            // createElem("a", createElem("td", elem), set.metadata.name, { "href": `./sets?set=${set.metadata.name}` })
+            createElem("button", createElem("td", elem), set.metadata.name).addEventListener("click", e => { link(e.srcElement) });
         }
     }
 }

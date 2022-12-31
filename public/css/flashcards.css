@@ -26,6 +26,10 @@ h3 {
 }
 
 .back-container {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    top: 12px;
+    right: 40px;
 	cursor: pointer;
 	margin-left: auto;
 	margin-right: 35px;
@@ -38,7 +42,7 @@ h3 {
 	transition: var(--button-transition-time);
 	box-sizing: border-box;
 	padding: 0 15px;
-	border: 2px solid var(--lightgray);
+	border: 2px solid black;
 	border-radius: 100px;
 	display: flex;
 	width: 150px;
@@ -143,9 +147,9 @@ h3 {
 	grid-area: 3/1/3/1;
 }
 
-.nav-buttons div {
+.nav-buttons button {
 	transition: var(--button-transition-time);
-	border: 2px solid var(--lightgray);
+	border: 2px solid black;
 	border-radius: 5px;
 	height: 40px;
 	width: 50%;
@@ -155,9 +159,11 @@ h3 {
 	align-items: center;
 }
 
-.nav-buttons div:hover {
+.nav-buttons button:hover {
 	border-color: var(--accent);
 }
+
+
 
 @keyframes slide-in-right {
 	0% {
