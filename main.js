@@ -1,8 +1,8 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
+const { app, BrowserWindow, ipcMain } = require("electron");
+const path = require("path");
 const fs = require("fs");
-const userDataPath = path.join(app.getPath('userData'), "userdata.json");
+const userDataPath = path.join(app.getPath("userData"), "userdata.json");
 var userdata = {};
 
 let mainWindow;
@@ -13,15 +13,17 @@ function createWindow() {
         width: 1600,
         height: 1600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            // eslint-disable-next-line no-undef
+            preload: path.join(__dirname, "preload.js")
         },
         minWidth: 900,
         minHeight: 800,
         titleBarStyle: "hidden",
+        trafficLightPosition: {x: 10, y: 7}
     });
 
     // and load the index.html of the app.
-    mainWindow.loadFile('public/views/index.html');
+    mainWindow.loadFile("public/views/index.html");
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools();
@@ -30,7 +32,7 @@ function createWindow() {
         require(userDataPath) :
         require("./inituserdata.json");
 
-    ipcMain.handle('request-userdata', (e) => {
+    ipcMain.handle("request-userdata", (e) => {
         return userdata;
     });
 }
@@ -41,13 +43,13 @@ function createWindow() {
 app.whenReady().then(() => {
     createWindow();
 
-    app.on('activate', function () {
+    app.on("activate", function () {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
 
-    ipcMain.on('last-opened', (e, setName) => {
+    ipcMain.on("last-opened", (e, setName) => {
         // userdata.metadata["last-opened"] = setName;
     });
 
@@ -56,12 +58,12 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on('window-all-closed', function () {
-	/*if (process.platform !== 'darwin')*/ app.quit();
+app.on("window-all-closed", function () {
+    /*if (process.platform !== 'darwin')*/ app.quit();
 });
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-app.on('before-quit', (e) => {
+app.on("before-quit", (e) => {
     // fs.writeFileSync(userDataPath, JSON.stringify(userdata));
-})
+});

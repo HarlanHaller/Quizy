@@ -47,7 +47,8 @@ h3 {
 }
 
 .progress {
-	width: 32%;
+    transition: 0.2s;
+	width: 0%;
 	height: 4px;
 	background-color: var(--accent);
 	vertical-align: 0;
@@ -116,6 +117,31 @@ h3 {
 	grid-template-rows: 50px minmax(160px, auto) min-content;
 }
 
+.round-card-container {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.round-card {
+	box-sizing: border-box;
+	width: var(--learn-card-width);
+	min-height: calc(var(--learn-card-width)*0.675);
+	height: min-content;
+	max-height: 80vh;
+	overflow-y: auto;
+    overflow-x: hidden;
+	min-width: 480px;
+	max-width: 900px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgb(0 0 0 / 11%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+	display: grid;
+	padding: 20px;
+	grid-template-rows: 50px minmax(160px, auto) min-content;
+}
+
 .top-items,
 .content,
 .bottom-items {
@@ -124,13 +150,11 @@ h3 {
 }
 
 .buttons {
-	display: none;
 	margin: 0;
 	padding: 0;
 }
 
 .writing-items {
-    /* display: none; */
 	box-sizing: border-box;
 	min-height: 120px;
 }
@@ -256,7 +280,7 @@ input[type="text"]:focus-visible {
 }
 
 .option-activate::after {
-    transform-origin: 50% 68%;
+    transform-origin: 50% 71%;
     display: block;
     transition: 0.25s;
 	content: "\2699";
@@ -269,6 +293,8 @@ input[type="text"]:focus-visible {
 .option-activate:hover::after {
 	color: #3898ec;
 }
+
+x
 
 .star {
 	position: relative;
@@ -349,11 +375,22 @@ input[type="text"]:focus-visible {
 	border: 2px solid currentColor;
 	border-radius: 5px;
 	flex-grow: 1;
+    text-align: left;
 }
 
 .button:hover {
-	border-color: var(--accent);
+    border-color: var(--accent);
 }
+
+.button-deactivated {
+    color: var(--lightgray)
+
+}
+
+.button-deactivated:hover {
+    border-color: currentColor;
+}
+
 
 .popup {
 	display: none;
@@ -408,6 +445,7 @@ input[type="text"]:focus-visible {
 .options > div {
 	border-bottom: 1px solid var(--lightgray);
 	box-sizing: border-box;
+    padding: 10px;
 }
 
 .options > div:nth-child(1) {
@@ -422,7 +460,7 @@ input[type="text"]:focus-visible {
 h4 {
 	font-size: 25px;
 	font-weight: 400;
-	margin: 0;
+	margin: 0.5em 0 1em;
 }
 
 .options > div:nth-child(2) {
@@ -448,6 +486,76 @@ h4 {
 	border-color: #3898ec;
 	color: #3898ec;
 }
+
+#interRoundContainer {
+    display: none;
+}
+
+#termList {
+	margin: 50px auto 0;
+	left: 15%;
+	width: 70%;
+}
+
+.term {
+	display: flex;
+	align-items: stretch;
+	margin: 0 0 10px 0;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.term div {
+	padding-left: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.term p {
+	margin: 10px 10px;
+	width: 250px;
+	flex-wrap: wrap;
+	overflow-wrap: break-word;
+}
+
+.term > div:last-child div {
+    width: auto;
+}
+
+.term > div:last-child p {
+    width: 100%;
+}
+
+.term > div:last-child {
+    min-width: 250px;
+    flex-grow: 1;
+}
+
+.term div:not(:last-child) {
+	border-right: 2px solid var(--lightgray);
+}
+
+.term div div {
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	border: none;
+	align-items: center;
+}
+
+.notStudied {
+    color: rgb(186, 0, 0);
+}
+.studying {
+    color: rgb(235, 221, 95);
+}
+.mastered {
+    color: rgb(9, 164, 9);
+}
+
 
 .gg-chevron-left-o {
 	box-sizing: border-box;

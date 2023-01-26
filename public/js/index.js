@@ -3,7 +3,7 @@ const lastOpened = document.getElementById("suggested");
 
 function createElem(type, parent, Text, attributes) {
     Text = Text || "";
-    let elem = document.createElement(type)
+    let elem = document.createElement(type);
     elem.innerText = Text;
     for (let i in attributes) {
         elem.setAttribute(i, attributes[i]);
@@ -16,6 +16,7 @@ function link(elem) {
     window.location.assign("./sets.html?set=" + elem.innerText);
 }
 
+// eslint-disable-next-line no-unreachable
 userdataPromise.then((userdata) => {
-    createElem("button", lastOpened, userdata.metadata["last-opened"], { "class": "lastOpened" }).addEventListener("click", e => { link(e.srcElement) });
+    createElem("button", lastOpened, userdata.metadata["last-opened"], { "class": "lastOpened" }).addEventListener("click", e => { link(e.srcElement); });
 });

@@ -42,7 +42,7 @@
             <div id="progress" class="progress"></div>
         </div>
 
-        <div class="learn-card-container">
+        <div class="learn-card-container" id="learn-card">
             <div class="learn-card">
                 <div class="top-items">
                     <div class="option-activate" id="activateOptions"></div>
@@ -53,15 +53,15 @@
                 <div class="bottom-items">
                     <div class="buttons" id="buttons">
                         <div class="button-container">
-                            <div class="button" id="answer1"></div>
-                            <div class="button" id="answer2"></div>
+                            <button class="button" id="answer1"></button>
+                            <button class="button" id="answer2"></button>
                         </div>
                         <div class="button-container">
-                            <div class="button" id="answer3"></div>
-                            <div class="button" id="answer4"></div>
+                            <button class="button" id="answer3"></button>
+                            <button class="button" id="answer4"></button>
                         </div>
                     </div>
-                    <div class="writing-items">
+                    <div class="writing-items" id="writing">
                         <div class="form">
                             <div class="text-container">
                                 <input id="text" type="text" placeholder="Type away" autocomplete="false" autocapitalize="false" spellcheck="false">
@@ -81,7 +81,12 @@
                 </div>
             </div>
         </div>
-
+        
+        <div id="interRoundContainer">
+            <h3>round complete</h3>
+            <div id="termList"></div>
+        </div>
+        
         <div class="popup" id="popupCon">
             <button class="popup-button" id="popup">Next</button>
         </div>
@@ -94,11 +99,18 @@
                         <i class="gg-add"></i>
                     </div>
                 </div>
-                <div></div>
+                <div>
+                    <h4>Answer With:  </h4>
+                    <select class="modeSelect">
+                        <option>Multiple Choice</option>
+                        <option>Writing</option>
+                    </select>
+                </div>
                 <div></div>
                 <div></div>
             </div>
         </div>
+
 
         <p class="version_box">We are using Node.js <span id="node-version"></span>,
             Chromium <span id="chrome-version"></span>,

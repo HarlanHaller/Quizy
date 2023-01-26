@@ -1,26 +1,26 @@
 const userdataPromise = window.dataLoader.getUserData();
-const setName = window.location.search.split('?set=')[1];
+const setName = window.location.search.split("?set=")[1];
 var termIndex = 0;
-var set, index, termList = [];
+var set, termList = [];
 
 const rightArrow = (e, duration) => {
     termIndex++;
     renderTerm();
-    $('card').animate(
+    $("card").animate(
         [
             {
-                transform: 'translateX(200px)',
+                transform: "translateX(200px)",
                 opacity: 0
             },
             {
-                transform: 'translateX(0)',
+                transform: "translateX(0)",
                 opacity: 1
             }
         ],
         {
             duration: duration,
             iterations: 1,
-            easing: 'ease-out'
+            easing: "ease-out"
         }
     );
 };
@@ -28,44 +28,44 @@ const rightArrow = (e, duration) => {
 const leftArrow = (e, duration) => {
     termIndex--;
     renderTerm();
-    $('card').animate(
+    $("card").animate(
         [
             {
-                transform: 'translateX(-200px)',
+                transform: "translateX(-200px)",
                 opacity: 0
             },
             {
-                transform: 'translateX(0)',
+                transform: "translateX(0)",
                 opacity: 1
             }
         ],
         {
             duration: duration,
             iterations: 1,
-            easing: 'ease-out'
+            easing: "ease-out"
         }
     );
 };
 
 const flipCard = (e) => {
-    let badTargets = ['leftArrow', 'rightArrow', 'gg-arrow-long-right', 'gg-arrow-long-left'];
+    let badTargets = ["leftArrow", "rightArrow", "gg-arrow-long-right", "gg-arrow-long-left"];
     if (!badTargets.includes(e.target.className)) {
-        $("card").className == 'flip-card animations'
-            ? ($("card").className = 'flip-card animations flipped')
-            : ($("card").className = 'flip-card animations');
+        $("card").className == "flip-card animations"
+            ? ($("card").className = "flip-card animations flipped")
+            : ($("card").className = "flip-card animations");
     }
-}
+};
 
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener("keydown", (e) => {
     switch (e.key) {
-        case 'ArrowLeft':
+        case "ArrowLeft":
             leftArrow(e, 100);
             break;
-        case 'ArrowRight':
+        case "ArrowRight":
             rightArrow(e, 100);
             break;
-        case ' ':
+        case " ":
             flipCard(e);
             break;
         default:
@@ -73,10 +73,10 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-$('card').addEventListener('click', function (e) { flipCard(e) });
-Array.from($class('rightArrow')).forEach((e) => e.addEventListener('click', () => { rightArrow(e, 300) }));
-Array.from($class('leftArrow')).forEach((e) => e.addEventListener('click', () => { leftArrow(e, 300) }));
-$('back').addEventListener('click', () => { link(`./sets.html?set=${setName}`) })
+$("card").addEventListener("click", function (e) { flipCard(e); });
+Array.from($class("rightArrow")).forEach((e) => e.addEventListener("click", () => { rightArrow(e, 300); }));
+Array.from($class("leftArrow")).forEach((e) => e.addEventListener("click", () => { leftArrow(e, 300); }));
+$("back").addEventListener("click", () => { link(`./sets.html?set=${setName}`); });
 
 function $(id) {
     return document.getElementById(id);
@@ -90,13 +90,13 @@ function getSet(userdata, setName) {
     for (let i of userdata.sets) {
         if (i.metadata.name == setName) return i;
     }
-    throw 'not a set';
+    throw "not a set";
 }
 
 function genTermArr(kSet) {
     let temp = [];
-    for (part in kSet.cards) {
-        for (item in kSet.cards[part]) {
+    for (let part in kSet.cards) {
+        for (let item in kSet.cards[part]) {
             temp.push([item, kSet.cards[part][item]]);
         }
     }
@@ -105,25 +105,22 @@ function genTermArr(kSet) {
 
 function renderTerm() {
     termIndex = termIndex >= 0 ? (termIndex >= termList.length ? 0 : termIndex) : termList.length - 1;
-    $('term').innerText = termList[termIndex][0];
-    $('definition').innerText = termList[termIndex][1];
+    $("term").innerText = termList[termIndex][0];
+    $("definition").innerText = termList[termIndex][1];
 }
 
 function link(href) {
-    window.location.assign(href)
+    window.location.assign(href);
 }
 
 userdataPromise.then((userdata) => {
     try {
         set = getSet(userdata, setName);
     } catch (error) {
-        document.body.innerHTML = 'no set found';
+        document.body.innerHTML = "no set found";
         console.error(error);
         return;
     }
-    index = userdata.sets.findIndex((e) => {
-        return e === set;
-    });
     termList = genTermArr(set);
     renderTerm();
 });
