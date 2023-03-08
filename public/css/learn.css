@@ -294,7 +294,6 @@ input[type="text"]:focus-visible {
 	color: #3898ec;
 }
 
-x
 
 .star {
 	position: relative;
@@ -463,8 +462,16 @@ h4 {
 	margin: 0.5em 0 1em;
 }
 
+.no-margin {
+    margin: 0;
+}
+
 .options > div:nth-child(2) {
 	grid-area: 2/1/2/1;
+}
+
+.modeSelect {
+    
 }
 
 .options > div:nth-child(3) {

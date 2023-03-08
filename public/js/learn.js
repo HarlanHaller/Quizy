@@ -35,7 +35,7 @@ var answerMode = 0;
 
 //parameters
 const MAX_STUDYING_PER_ROUND = 3;
-const CARDS_PER_ROUND = 3;
+const CARDS_PER_ROUND = 7;
 
 const colors = {
     correctColor: "rgb(13, 216, 13)",
@@ -195,6 +195,7 @@ async function nextRound() {
 
 
     createHTMLTermList();
+    console.log($("popupCon").style.display == "flex");
     promptNext(nextRoundTransitionHandler);
     return true;
 }
@@ -204,6 +205,7 @@ async function nextRound() {
 function answerButton(value) {
     if (!active) return;
     deactivate();
+    $(`answer${value}`).blur();
     if (value == correct + 1) {
         //correct
         markCorrect($(`answer${value}`));
@@ -265,7 +267,7 @@ function generateRoundTerms() {
         roundTerms.push(termList.notStudied[i]);
     }
     for (let i = 0; i < CARDS_PER_ROUND - roundTerms.length; i++) {
-        if (termList.notStudied[i] == undefined) break;
+        if (termList.studying[i] == undefined) break;
         roundTerms.push(termList.studying[i]);
     }
 }
@@ -391,18 +393,18 @@ $("activateOptions").addEventListener("click", () => { $("options").style.displa
 $("exit").addEventListener("click", () => { $("options").style.display = "none"; });
 $("submit").addEventListener("click", answerWritten);
 $("dontKnow").addEventListener("click", () => { $("text").value = ""; answerWritten(); });
+$("modeSelect").addEventListener("change", function() {this.value == "Multiple Choice" ? answerMode = 0 : answerMode = 1; selectivePopulate();});
+
+for (let i = 1; i <= 4; i++) {
+    $(`answer${i}`).addEventListener("click", function () {if (active) { answerButton(this.id[this.id.length - 1]); }}, true);
+}
 
 document.addEventListener("keydown", (e) => {
     if (e.key != "Enter") return;
-    if (e.target.className == "button") e.preventDefault();
+    // if (e.target.className == "button") e.preventDefault();
     if (active && answerMode == 1) { answerWritten(); return; }
     if (!active) { $("popup").dispatchEvent( new MouseEvent("click")); }
-});
-
-for (let i = 1; i <= 4; i++) {
-    $(`answer${i}`).addEventListener("click", function () { if (active) answerButton(this.id[this.id.length - 1]); });
-}
-
+}, true);
 
 //data promise handling
 userdataPromise.then((userdata) => {
@@ -417,10 +419,17 @@ userdataPromise.then((userdata) => {
 
     //set the funcs
     study = async (term) => { 
-        termList.studying.push(termList.notStudied.splice(findArr(term, termList.notStudied), 1)[0]); 
+        let tempTerm = termList.notStudied.splice(findArr(term, termList.notStudied), 1)[0];
+        tempTerm.pop();
+        tempTerm.push("studying");
+        termList.studying.push(tempTerm); 
     };
+
     master = async (term) => { 
-        termList.mastered.push(termList.studying.splice(findArr(term, termList.studying), 1)[0]); 
+        let tempTerm = termList.studying.splice(findArr(term, termList.studying), 1)[0];
+        tempTerm.pop();
+        tempTerm.push("mastered");
+        termList.mastered.push(tempTerm); 
     };
 
     // initialize
