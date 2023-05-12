@@ -52,6 +52,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "puppeteer": "^20.2.0"
   }
 }
