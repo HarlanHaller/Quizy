@@ -423,6 +423,7 @@ userdataPromise.then((userdata) => {
         tempTerm.pop();
         tempTerm.push("studying");
         termList.studying.push(tempTerm); 
+        window.dataLoader.study(setName, term);
     };
 
     master = async (term) => { 
@@ -430,6 +431,7 @@ userdataPromise.then((userdata) => {
         tempTerm.pop();
         tempTerm.push("mastered");
         termList.mastered.push(tempTerm); 
+        window.dataLoader.master(setName, term);
     };
 
     // initialize
