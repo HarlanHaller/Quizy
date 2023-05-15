@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const userDataPath = path.join(app.getPath("userData"), "userdata.json");
 var userdata = {};
+var setIndexes = {};
 
 let mainWindow;
 
@@ -32,6 +33,10 @@ function createWindow() {
         require(userDataPath) :
         require("./inituserdata.json");
 
+    for (let i in userdata.sets) {
+        setIndexes[userdata.sets[i].metadata.name] = i;
+    }
+
     ipcMain.handle("request-userdata", (e) => {
         return userdata;
     });
@@ -50,7 +55,17 @@ app.whenReady().then(() => {
     });
 
     ipcMain.on("last-opened", (e, setName) => {
-        // userdata.metadata["last-opened"] = setName;
+        userdata.metadata["last-opened"] = setName;
+    });
+
+    ipcMain.on("study-term", (e, set, term) => {
+        delete userdata.sets[setIndexes[set]].cards.notStudied[term[0]];
+        userdata.sets[setIndexes[set]].cards.studying[term[0]] = term[1];
+    });
+
+    ipcMain.on("master-term", (e, set, term) => {
+        delete userdata.sets[setIndexes[set]].cards.studying[term[0]];
+        userdata.sets[setIndexes[set]].cards.mastered[term[0]] = term[1];
     });
 
 });
@@ -65,5 +80,5 @@ app.on("window-all-closed", function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 app.on("before-quit", (e) => {
-    // fs.writeFileSync(userDataPath, JSON.stringify(userdata));
+    fs.writeFileSync(userDataPath, JSON.stringify(userdata));
 });
