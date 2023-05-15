@@ -31,7 +31,6 @@ var active = true;
 var termOrDef = 0;
 //write or button mode (0 button, 1 write)
 var answerMode = 0;
-//TODO implement
 
 //parameters
 const MAX_STUDYING_PER_ROUND = 3;
@@ -280,8 +279,7 @@ function drawRandoms(maxIndex, correct) {
     while (counter < termListNoSection.length) {
         counter++;
         let temp = Math.floor(maxIndex * Math.random());
-        if (!outPutsIs.includes(temp) && 
-        termListNoSection[temp][inv(termOrDef)] != correct[inv(termOrDef)] ) 
+        if (!outPutsIs.includes(temp) && termListNoSection[temp][inv(termOrDef)] != correct[inv(termOrDef)]) 
         { outPutsIs.push(temp); }
         if (outPutsIs.length == 4) break;
     }

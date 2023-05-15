@@ -161,20 +161,6 @@ body {
 	background-color: var(--accent);
 }
 
-.version_box {
-    display: none;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	text-align: center;
-	height: fit-content;
-	min-height: 2rem;
-	background-color: var(--lightgray);
-	padding-top: 0.5rem;
-	font-size: 1rem;
-	margin: 0;
-}
-
 button {
     cursor: pointer;
     font: inherit;

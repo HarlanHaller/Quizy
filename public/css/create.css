@@ -1,0 +1,8 @@
+:root {
+	--lightgray: rgb(218, 219, 220);
+	/* --accent: #e8962a; */
+	--accent: #3898ec;
+	--backgroundGray: rgb(246, 247, 251);
+	--lightblue: rgb(188, 210, 242);
+    --nav-transition-time: 0.4s;
+}

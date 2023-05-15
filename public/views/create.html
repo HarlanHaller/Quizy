@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-    <html>
+<html>
     <head>
         <meta charset="UTF-8">
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
         <link rel="stylesheet" href="../css/global.css">
-        <link rel="stylesheet" href="../css/library.css">
+        <link rel="stylesheet" href="../css/create.css">
         <title>Quizy</title>
+        <script type="javascript" id="loader"></script>
     </head>
     <body>
         <div class="size-nav"></div>
@@ -18,21 +19,18 @@
                     <div></div>
                     <div></div>
                 </div>
-                <div class="active">
-                    <a href="./library.html" >Library</a>
+                <div>
+                    <a href="./library.html">Library</a>
                     <div></div>
                     <div></div>
                 </div>
-                <div>
-                    <a href="./create.html">Create</a>
+                <div class="active">
+                    <a>Create</a>
                     <div></div>
                     <div></div>
                 </div>
             </div>
         </div>
-
-        <h3>Your sets: </h3>
-        <table id="setGrid"></table>
-        <script src="../js/library.js"></script>
+        <script src="../js/create.js"></script>
     </body>
 </html>
