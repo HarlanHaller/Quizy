@@ -1,10 +1,3 @@
-:root {
-	--lightgray: rgb(218, 219, 220);
-	--accent: #3898ec;
-	--backgroundGray: rgb(246, 247, 251);
-	--lightblue: rgb(188, 210, 242);
-}
-
 body {
 	padding-bottom: 100px;
 }
@@ -24,7 +17,6 @@ h4 {
 .setnav {
 	display: flex;
 	justify-content: center;
-	margin-top: 0px;
 	margin-bottom: 20px;
 	margin-top: 35px;
 }
@@ -35,7 +27,7 @@ h4 {
 	box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
 	background-color: #fff;
 	padding: 17px 12px;
-	margin: 0px 6px;
+	margin: 0 6px;
 	font-size: 17px;
 	cursor: pointer;
 	width: fit-content;
@@ -71,11 +63,11 @@ h4 {
 }
 
 .term > div:last-child div {
-    width: auto;
+	width: auto;
 }
 
 .term > div:last-child p {
-    width: 100%;
+	width: 100%;
 }
 
 .term > div:last-child {

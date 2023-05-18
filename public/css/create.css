@@ -1,8 +1,131 @@
-:root {
-	--lightgray: rgb(218, 219, 220);
-	/* --accent: #e8962a; */
-	--accent: #3898ec;
-	--backgroundGray: rgb(246, 247, 251);
-	--lightblue: rgb(188, 210, 242);
-    --nav-transition-time: 0.4s;
+.primary-container {
+    margin: 0 auto;
+    width: 80vw;
+    height: fit-content;
+    background-color: red;
+    padding: 25px;
+}
+
+.set-info {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 80px 40px;
+    height: fit-content;
+    background-color: #fff;
+}
+
+.text-container {
+    margin: 0 auto;
+    width: 90%;
+    background: var(--lightgray);
+    padding: 10px 20px 6px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.text-container::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+}
+
+.text-container:where(:focus-within, :hover)::after {
+    background-color: var(--accent);
+}
+
+.text-container:has(.text-display) {
+    border-color: rgb(13, 216, 13);
+    background-color: rgba(75 241 75 / 49%);
+}
+
+.text-display {
+    color: rgb(9, 164, 9);
+}
+
+.text-container:has(.text-display)::after {
+    display: none;
+}
+
+.text-container > div {
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    width: 100%;
+    margin: 0 auto 3px;
+    padding: 1px 2px;
+    line-break: anywhere;
+}
+
+input[type="text"] {
+    margin: 0 auto;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    width: 100%;
+    font-family: Montserrat, monospace;
+    margin-bottom: 3px;
+}
+
+input[type="text"]:focus-visible {
+    outline: none;
+}
+
+.set-name {
+    grid-area: 2 / 1 / 2 / span 2;
+}
+
+#termList {
+    margin: 50px auto 0;
+    left: 15%;
+    width: 70%;
+}
+
+.term {
+    display: flex;
+    align-items: stretch;
+    margin: 0 0 10px 0;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.term div {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.term p {
+    margin: 10px 10px;
+    width: 250px;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+}
+
+.term > div:last-child div {
+    width: auto;
+}
+
+.term > div:last-child p {
+    width: 100%;
+}
+
+.term > div:last-child {
+    min-width: 250px;
+    flex-grow: 1;
+}
+
+.term div:first-child:not(:only-of-type) {
+    border-right: 2px solid var(--lightgray);
+}
+
+.term div div {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    border: none;
+    align-items: center;
 }
