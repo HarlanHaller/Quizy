@@ -1,5 +1,5 @@
 const userdataPromise = window.dataLoader.getUserData();
-const setName = window.location.search.split("?set=")[1];
+const setName = URLSearchParams(window.location.search).get("set");
 var set;
 var termList = [];
 

@@ -39,39 +39,37 @@
         {
             "cards": {
                 "notStudied": {
-                "term0": "definition1",
-                "term1": "definition2",
-                "term2": "definition3",
-                "term3": "definition4",
-                "looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong": "definition",
-                "term5": "definition",
-                "term6": "definition",
-                "term7": "definitionLoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-                "term8": "definition",
-                "term9": "definition",
-                "term10": "definition",
-                "term11": "definition",
-                "term12": "definition",
-                "term13": "definition",
-                "term14": "definition",
-                "term15": "definition",
-                "term16": "definition",
-                "term17": "definition",
-                "term18": "definition",
-                "term19": "definition",
-                "term20": "definition"
+                    "México": "mexicano",
+                    "Guatemala": "guatemalteco",
+                    "El Salvador": "salvadoreño",
+                    "Honduras": "hondureño",
+                    "Nicaragua": "nicaragüenese",
+                    "Costa Rica": "costarricense",
+                    "Panama": "panameño",
+                    "Cuba": "cubano",
+                    "Republica Dominicana": "dominicano",
+                    "Puerto Rico": "puertoriqueño",
+                    "Colombia": "colombiano",
+                    "Ecuador": "ecuatoriano",
+                    "Peru": "peruano",
+                    "Bolivia": "boliviano",
+                    "Chile": "chileno",
+                    "Argentina": "argentino",
+                    "Paraguay": "paraguayo",
+                    "Uruguay": "uruguayo",
+                    "Venezuela": "venezolano",
+                    "España": "español",
+                    "Estados Unidos": "estadounidense"
+                },
+                "studying": {
+                },
+                "mastered": {
+                }
             },
-            "studying": {
-                "Studying": "definition"
-            },
-            "mastered": {
-                "Mastered": "definition"
+            "metadata": {
+                "name": "spanish nationalities"
             }
-        },
-        "metadata": {
-            "name": "prototype1"
         }
-    }
     ],
     "metadata": {
         "last-opened": "prototype"

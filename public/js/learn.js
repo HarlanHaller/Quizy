@@ -182,7 +182,7 @@ const nextRoundTransitionHandler = () => {
 };
 
 async function nextRound() {
-    if(termIndex != roundTerms.length) return false;
+    if(termIndex !== roundTerms.length) return false;
     isInterRound = true;
     await lastStudyPromise;
     termIndex = 0;
@@ -194,7 +194,7 @@ async function nextRound() {
 
 
     createHTMLTermList();
-    console.log($("popupCon").style.display == "flex");
+    console.log($("popupCon").style.display === "flex");
     promptNext(nextRoundTransitionHandler);
     return true;
 }
