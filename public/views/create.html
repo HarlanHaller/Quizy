@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -30,6 +30,36 @@
                     <div></div>
                 </div>
             </div>
+        </div>
+        <div class="primary-container">
+            <div class="set-info">
+                <h3 class="heading-text">Create New Set<i class="edit"></i></h3>
+                <button class="create-button">Create</button>
+                <div class="text-container set-name">
+                    <input id="setName" type="text" placeholder="Set Name" autocomplete="off" autocapitalize="off" spellcheck="true" lang="en">
+                </div>
+            </div>
+            <div class="create-term">
+                <div id="displayTermList">
+                    <div class="term">
+                        <div>
+                            <div>
+                                <input id="tempTerm" type="text" placeholder="Term" autocomplete="off" autocapitalize="off" spellcheck="true" lang="en">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input id="tempDef" type="text" placeholder="Definition" autocomplete="off" autocapitalize="off" spellcheck="true" lang="en">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="addTerm" class="add-term"><i class="gg-add"></i></button>
+            </div>
+            <div class="error-container">
+                <p id="error" class="error"></p>
+            </div>
+            <div id="termList"></div>
         </div>
         <script src="../js/create.js"></script>
     </body>

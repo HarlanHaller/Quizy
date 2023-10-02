@@ -1,10 +1,21 @@
 :root {
-	--lightgray: rgb(218, 219, 220);
+	--lightgray: rgb(223 225 226);
 	/* --accent: #e8962a; */
 	--accent: #3898ec;
 	--backgroundGray: rgb(246, 247, 251);
 	--lightblue: rgb(188, 210, 242);
     --nav-transition-time: 0.4s;
+	--ggs: 1.7;
+	--ggs2: 1.2;
+	--ggs3: 1.3;
+	--ggs4: 1.5;
+	--ggs5: 2.7;
+	--learn-card-width: 50vw;
+	--button-transition-time: 0.15s;
+	--options-gear-size: 20px;
+	--accent-hover: #77b4e8;
+	--flashcard-width: 60vw;
+	--flashcard-height: calc(100vh - 166px - 50px);
 }
 
 * {
@@ -68,8 +79,9 @@ body {
 	align-items: center;
 	padding: 0 20px;
 	background-color: #fff;
-	box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.06);
+	box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.06);
 	margin-bottom: 30px;
+	/*noinspection CssUnknownProperty*/
 	-webkit-app-region: drag;
 }
 
@@ -99,6 +111,7 @@ body {
 	height: 100%;
 	margin: 0 auto;
 	overflow: hidden;
+	/*noinspection CssUnknownProperty*/
 	-webkit-app-region: no-drag;
 }
 
@@ -108,7 +121,7 @@ body {
 	align-items: center;
 	float: left;
 	text-align: center;
-	padding: 0px 16px;
+	padding: 0 16px;
 	height: 100%;
 	width: fit-content;
 	text-decoration: none;
