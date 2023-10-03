@@ -1,11 +1,11 @@
 //a promise that resolves with the user data
 const userdataPromise = window.dataLoader.getUserData();
 //the sets name
-const setName = window.location.search.split("?set=")[1];
+const setName = new URLSearchParams(window.location.search).get("set");
 //functions to be set in the promise (bad code) (are partially created for intellisense)
 var study = async (term) => { term; }, master = async  (term) => { term; };
 //insures all study or master promises are resolved when needed
-var lastStudyPromise = new Promise(() => {});
+var lastStudyPromise = new Promise((resolve) => {resolve();});
 //check if we are interRound
 var isInterRound = false;
 //vars for the set and index of that set (set in userdata promise handling)
@@ -31,6 +31,8 @@ var active = true;
 var termOrDef = 0;
 //write or button mode (0 button, 1 write)
 var answerMode = 0;
+//Callback last used by prompt()
+var lastCallback = 0;
 
 //parameters
 const MAX_STUDYING_PER_ROUND = 3;
@@ -155,13 +157,18 @@ function markIncorrectWritten() {
 }
 
 function promptNext(callBack) {
-    $("popup").addEventListener("click", callBack);
+    let popup = $("popup");
+    let con = $("popupCon");
 
-    console.log($("popupCon").style.display);
-    if($("popupCon").style.display == "flex") return;
-    $("popupCon").style.display = "flex";
+    if (lastCallback !== 0) popup.removeEventListener("click", lastCallback);
+    popup.addEventListener("click", callBack);
+    lastCallback = callBack;
 
-    $("popupCon").animate(
+    console.log(con.style.display);
+    if(con.style.display === "flex") return;
+    con.style.display = "flex";
+
+    con.animate(
         animations.popupIn.keyframes,
         animations.popupIn.timing
     );
@@ -177,12 +184,14 @@ const nextRoundTransitionHandler = () => {
     $("learn-card").style = "";
     $("interRoundContainer").style = "";
     isInterRound = false;
+    console.log("hi2");
     generateRoundTerms();
     selectivePopulate();
 };
 
 async function nextRound() {
     if(termIndex !== roundTerms.length) return false;
+    console.log("hi");
     isInterRound = true;
     await lastStudyPromise;
     termIndex = 0;
@@ -227,7 +236,7 @@ function answerButton(value) {
 function answerWritten() {
     if (!active) return;
     let value = $("text").value;
-    if (value == roundTerms[termIndex][inv(termOrDef)]) {
+    if (value === roundTerms[termIndex][inv(termOrDef)]) {
         markCorrectWritten();
 
         setTimeout(() => {

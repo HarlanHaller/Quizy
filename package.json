@@ -1,16 +1,17 @@
 {
   "name": "Quizy",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "make-all": "electron-forge make --platform darwin && electron-forge make --platform linux",
     "clean": "rimraf out",
-    "clean-dev-only": "rimraf '/Users/harlanhaller/Library/Application Support/Quizy/userdata.json'"
+    "clean-dev-only": "rimraf '/Users/harlanhaller/Library/Application Support/Quizy/userdata.json'",
+    "publish": "electron-forge publish"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [],
   "author": "GitHub",
   "license": "CC0-1.0",
@@ -21,7 +22,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electron_quick_start"
+            "name": "Quizy"
           }
         },
         {
@@ -37,17 +38,38 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "format": "ULFO",
+            "overwrite": true
+          }
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "harlanhaller",
+              "name": "Quizy"
+            },
+            "prerelease": true
+          }
         }
       ]
     }
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.3",
-    "@electron-forge/maker-deb": "^6.0.3",
+    "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-dmg": "^6.2.1",
     "@electron-forge/maker-rpm": "^6.0.3",
     "@electron-forge/maker-squirrel": "^6.0.3",
     "@electron-forge/maker-zip": "^6.0.3",
-    "electron": "^22.0.1",
+    "@electron-forge/publisher-github": "^6.2.1",
+    "electron": "^22.3.24",
     "eslint": "^8.31.0",
     "rimraf": "^3.0.2"
   },

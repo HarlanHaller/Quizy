@@ -43,7 +43,7 @@
                     "Guatemala": "guatemalteco",
                     "El Salvador": "salvadoreño",
                     "Honduras": "hondureño",
-                    "Nicaragua": "nicaragüenese",
+                    "Nicaragua": "nicaragüense",
                     "Costa Rica": "costarricense",
                     "Panama": "panameño",
                     "Cuba": "cubano",
@@ -57,9 +57,7 @@
                     "Argentina": "argentino",
                     "Paraguay": "paraguayo",
                     "Uruguay": "uruguayo",
-                    "Venezuela": "venezolano",
-                    "España": "español",
-                    "Estados Unidos": "estadounidense"
+                    "Venezuela": "venezolano"
                 },
                 "studying": {
                 },
