@@ -3,37 +3,34 @@
         {
             "cards": {
                 "notStudied": {
-                    "term0": "definition0",
-                    "term1": "definition1",
-                    "term2": "definition2",
-                    "term3": "definition3",
-                    "looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong": "longDefinition",
-                    "term5": "definition5",
-                    "term6": "definition6",
-                    "term7": "definition7Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-                    "term8": "definition8",
-                    "term9": "definition9",
-                    "term10": "definition10",
-                    "term11": "definition11",
-                    "term12": "definition12",
-                    "term13": "definition13",
-                    "term14": "definition14",
-                    "term15": "definition15",
-                    "term16": "definition16",
-                    "term17": "definition17",
-                    "term18": "definition18",
-                    "term19": "definition19",
-                    "term20": "definition20"
+                    "Paraguay": "Asunción",
+                    "Chile": "Santiago",
+                    "Argentina": "Buenos Aires",
+                    "Uruguay": "Montevideo",
+                    "Colombia": "Bogotá",
+                    "Ecuador": "Quito",
+                    "Perú": "Lima",
+                    "Venezuela": "Caracas",
+                    "Bolivia": "Sucre, La Paz",
+                    "Cuba": "La Habana",
+                    "República Dominicana": "Santo Domingo",
+                    "Puerto Rico": "San Juan",
+                    "Guatemala": "Ciudad de Guatemala",
+                    "El Salvador": "San Salvador",
+                    "Honduras": "Tegucigalpa",
+                    "Nicaragua": "Managua",
+                    "Costa Rica": "San José",
+                    "Panamá": "Ciudad de Panamá",
+                    "México": "México D.F.",
+                    "España": "Madrid"
                 },
                 "studying": {
-                    "Studying": "definition"
                 },
                 "mastered": {
-                    "Mastered": "definition"
                 }
             },
             "metadata": {
-                "name": "prototype"
+                "name": "spanish capitals"
             }
         },
         {
