@@ -64,9 +64,46 @@
             "metadata": {
                 "name": "spanish nationalities"
             }
+        },
+        {
+            "cards": {
+                "notStudied": {
+                    "artista": "artist",
+                    "escultor(a)": "sculptor",
+                    "La pintura / El cuadro": "painting",
+                    "El dibujo": "drawing",
+                    "El bosquejo": "sketch",
+                    "bosquejar": "to sketch",
+                    "El retrato": "portrait",
+                    "retratar": "to paint a portrait",
+                    "El autorretrato": "self-portrait",
+                    "La escultura": "sculpture",
+                    "El museo": "museum",
+                    "El fondo": "background",
+                    "El primer plano": "foreground",
+                    "El mural": "mural",
+                    "Esculpir": "to sculpt",
+                    "Pintar": "to paint",
+                    "El pintor / La pintora": "painter",
+                    "Dibujar": "to draw",
+                    "El pincel": "paintbrush",
+                    "Crear": "create",
+                    "Colorear": "to color",
+                    "El arte": "art",
+                    "El lienzo": "canvas",
+                    "La obra (de arte)": "Work (of art)",
+                    "La obra maestra": "masterpiece"
+                },
+                "studying": {},
+                "mastered": {}
+            },
+            "metadata": {
+                "name": "Art Vocab"
+            }
         }
+
     ],
     "metadata": {
-        "last-opened": "prototype"
+        "last-opened": null
     }
 }
