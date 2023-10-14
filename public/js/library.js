@@ -16,7 +16,7 @@ function generateVirtTable(sets) {
     let virtSetTable = [];
     let tempRow = [];
     for (let i = 0; i < sets.length; i++) {
-        if (tempRow.push(sets[i]) == 3) {
+        if (tempRow.push(sets[i]) === 3) {
             virtSetTable.push(tempRow);
             tempRow = [];
         }

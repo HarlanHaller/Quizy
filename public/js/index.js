@@ -16,7 +16,13 @@ function link(elem) {
     window.location.assign("./sets.html?set=" + elem.innerText);
 }
 
-// eslint-disable-next-line no-unreachable
 userdataPromise.then((userdata) => {
-    createElem("button", lastOpened, userdata.metadata["last-opened"], { "class": "lastOpened" }).addEventListener("click", e => { link(e.srcElement); });
+    if (userdata.metadata["last-opened"] !== null) {
+        createElem("button", lastOpened, userdata.metadata["last-opened"], {"class": "lastOpened"})
+            .addEventListener("click", e => {
+                link(e.target);
+            });
+    } else {
+        lastOpened.style = "display:none";
+    }
 });
