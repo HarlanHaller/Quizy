@@ -68,6 +68,32 @@ app.whenReady().then(() => {
         userdata.sets[setIndexes[set]].cards.mastered[term[0]] = term[1];
     });
 
+    ipcMain.on("reset", (e, setName) => {
+        let set = userdata.sets[setIndexes[setName]];
+        let out = {
+            "cards": {
+                "notStudied": {
+
+                },
+                "studying": {
+                },
+                "mastered": {
+                }
+            },
+            "metadata": {
+                "name": userdata.sets[setIndexes[setName]].metadata.name
+            }
+        };
+
+        for (let part in set.cards) {
+            for (let item in set.cards[part]) {
+                out.cards.notStudied[item] =  set.cards[part][item];
+            }
+        }
+
+        userdata = out;
+    });
+
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common

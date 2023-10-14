@@ -47,18 +47,19 @@
                     "Republica Dominicana": "dominicano",
                     "Puerto Rico": "puertoriqueño",
                     "Colombia": "colombiano",
-                    "Ecuador": "ecuatoriano",
+                    "Ecuador": "ecuatoriano"
+
+                },
+                "studying": {
                     "Peru": "peruano",
                     "Bolivia": "boliviano",
                     "Chile": "chileno",
-                    "Argentina": "argentino",
+                    "Argentina": "argentino"
+                },
+                "mastered": {
                     "Paraguay": "paraguayo",
                     "Uruguay": "uruguayo",
                     "Venezuela": "venezolano"
-                },
-                "studying": {
-                },
-                "mastered": {
                 }
             },
             "metadata": {

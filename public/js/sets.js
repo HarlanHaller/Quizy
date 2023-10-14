@@ -2,6 +2,7 @@ const userdataPromise = window.dataLoader.getUserData();
 const setName = new URLSearchParams(window.location.search).get("set");
 var set;
 var termList = [];
+var reset = (setName) => {return setName;};
 
 function $(id) {
     return document.getElementById(id);
@@ -14,6 +15,7 @@ $("sortOptions").addEventListener("change", function () {
 
 $("Flashcards").addEventListener("click", () => link(`./flashcards.html?set=${setName}`));
 $("Learn").addEventListener("click", () => link(`./learn.html?set=${setName}`));
+$("reset").addEventListener("click", () => {reset(setName);});
 
 function objLen(obj) {
     return Object.keys(obj).length;
@@ -74,6 +76,10 @@ userdataPromise.then((userdata) => {
     }
     
     $("termCount").innerHTML += ` ${termList.length}`;
+
+    reset = (setName) => {
+        window.dataLoader.reset(setName);
+    };
 });
 
 document.getElementById("setTitle").innerText = setName;
