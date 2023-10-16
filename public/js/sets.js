@@ -79,6 +79,7 @@ userdataPromise.then((userdata) => {
 
     reset = (setName) => {
         window.dataLoader.reset(setName);
+        location.reload();
     };
 });
 

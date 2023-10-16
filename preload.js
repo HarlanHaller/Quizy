@@ -9,5 +9,6 @@ contextBridge.exposeInMainWorld("dataLoader", {
     },
     study: (setName, term) => ipcRenderer.send("study-term", setName, term),
     master: (setName, term) => ipcRenderer.send("master-term", setName, term),
-    reset: (setName) => ipcRenderer.send("reset", setName)
+    reset: (setName) => ipcRenderer.send("reset", setName),
+    setAnswerMode: (setName, mode) => ipcRenderer.send("setAnswerMode", setName, mode)
 });

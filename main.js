@@ -68,6 +68,10 @@ app.whenReady().then(() => {
         userdata.sets[setIndexes[set]].cards.mastered[term[0]] = term[1];
     });
 
+    ipcMain.on("setAnswerMode", (e, set, mode) => {
+        userdata.sets[setIndexes[set]].metadata.answerMode = mode;
+    });
+
     ipcMain.on("reset", (e, setName) => {
         let set = userdata.sets[setIndexes[setName]];
         let out = {
@@ -91,7 +95,8 @@ app.whenReady().then(() => {
             }
         }
 
-        userdata = out;
+        userdata.sets[setIndexes[setName]] = out;
+        console.log(userdata.sets[setIndexes[setName]]);
     });
 
 });

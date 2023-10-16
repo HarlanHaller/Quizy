@@ -30,7 +30,8 @@
                 }
             },
             "metadata": {
-                "name": "spanish capitals"
+                "name": "spanish capitals",
+                "answerMode": "multipleChoice"
             }
         },
         {
@@ -63,7 +64,8 @@
                 }
             },
             "metadata": {
-                "name": "spanish nationalities"
+                "name": "spanish nationalities",
+                "answerMode": "multipleChoice"
             }
         },
         {
@@ -99,7 +101,8 @@
                 "mastered": {}
             },
             "metadata": {
-                "name": "Art Vocab"
+                "name": "Art Vocab",
+                "answerMode": "multipleChoice"
             }
         }
 

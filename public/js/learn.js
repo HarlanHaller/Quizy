@@ -3,7 +3,8 @@ const userdataPromise = window.dataLoader.getUserData();
 //the sets name
 const setName = new URLSearchParams(window.location.search).get("set");
 //functions to be set in the promise (bad code) (are partially created for intellisense)
-var study = async (term) => { term; }, master = async  (term) => { term; };
+var study = async (term) => term, master = async  (term) => term,
+    reset = (setName) => setName, setAnswerMode = () => {};
 //insures all study or master promises are resolved when needed
 var lastStudyPromise = new Promise((resolve) => {resolve();});
 //check if we are interRound
@@ -189,22 +190,36 @@ const nextRoundTransitionHandler = () => {
     selectivePopulate();
 };
 
+const resetLearnHandler = () => {
+    $("popupCon").style.display = "none";
+    $("popup").innerText = "Next";
+    $("roundCompleteHeader").innerText = "Round Complete";
+    $("learn-card").style = "";
+    $("interRoundContainer").style = "";
+    isInterRound = false;
+    reset(setName);
+    location.reload();
+};
+
 async function nextRound() {
     if(termIndex !== roundTerms.length) return false;
-    console.log("hi");
     isInterRound = true;
     await lastStudyPromise;
     termIndex = 0;
-
     
     //remove existing cards and enable desired
     $("learn-card").style.display = "none";
     $("interRoundContainer").style.display = "block";
 
-
     createHTMLTermList();
     console.log($("popupCon").style.display === "flex");
-    promptNext(nextRoundTransitionHandler);
+    if (termList.notStudied.length + termList.studying.length > 0) {
+        promptNext(nextRoundTransitionHandler);
+    } else {
+        $("popup").innerText = "Reset Learn";
+        $("roundCompleteHeader").innerText = "Learn Complete";
+        promptNext(resetLearnHandler);
+    }
     return true;
 }
 
@@ -395,12 +410,13 @@ function $class(className) {
 
 //event handlers
 $("back").addEventListener("click", () => { link(`./sets.html?set=${setName}`); });
-$("popup").addEventListener("click", () => { $("popupCon").style.display = "none"; answerMode == 0 ? populateValuesButtons() : populateValuesWritten(); });
+$("popup").addEventListener("click", () => { $("popupCon").style.display = "none"; answerMode === 0 ? populateValuesButtons() : populateValuesWritten(); });
 $("activateOptions").addEventListener("click", () => { $("options").style.display = "flex"; });
 $("exit").addEventListener("click", () => { $("options").style.display = "none"; });
 $("submit").addEventListener("click", answerWritten);
 $("dontKnow").addEventListener("click", () => { $("text").value = ""; answerWritten(); });
-$("modeSelect").addEventListener("change", function() {this.value == "Multiple Choice" ? answerMode = 0 : answerMode = 1; selectivePopulate();});
+$("modeSelect").addEventListener("change", function() {this.value === "Multiple Choice" ? answerMode = 0 : answerMode = 1; selectivePopulate();});
+// $("reset").addEventListener("click", () => {reset(setName);});
 
 for (let i = 1; i <= 4; i++) {
     $(`answer${i}`).addEventListener("click", function () {if (active) { answerButton(this.id[this.id.length - 1]); }}, true);
@@ -441,7 +457,17 @@ userdataPromise.then((userdata) => {
         window.dataLoader.master(setName, term);
     };
 
+    setAnswerMode = () => {
+        window.dataLoader.setAnswerMode(setName, answerMode === 0 ? "multipleChoice" : "write");
+    };
+
+    reset = (setName) => {
+        window.dataLoader.reset(setName);
+        location.reload();
+    };
+
     // initialize
+    answerMode = set.metadata.answerMode === "multipleChoice" ? 0 : 1;
     genTermArr(set); //creates termList.
     generateRoundTerms();
     selectivePopulate();

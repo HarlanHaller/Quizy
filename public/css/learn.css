@@ -395,7 +395,7 @@ input[type="text"]:focus-visible {
 .popup-button {
 	background-color: var(--accent);
 	color: white;
-	width: min-content;
+	width: fit-content;
 	padding: 5px 10px;
 	font-size: 24px;
 	font-weight: 400;

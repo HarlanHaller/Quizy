@@ -23,6 +23,7 @@ console.log("\t\t\"mastered\": {}");
 console.log("\t},");
 
 console.log("\t\"metadata\": {");
-console.log(`\t\t"name": "${name}"`);
+console.log(`\t\t"name": "${name},"`);
+console.log("\t\t\"answerMode\": \"multipleChoice\"");
 console.log("\t}");
 console.log("}");
