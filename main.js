@@ -72,6 +72,10 @@ app.whenReady().then(() => {
         userdata.sets[setIndexes[set]].metadata.answerMode = mode;
     });
 
+    ipcMain.on("setAnswerType", (e, set, type) => {
+        userdata.sets[setIndexes[set]].metadata.answerType = type;
+    });
+
     ipcMain.on("reset", (e, setName) => {
         let set = userdata.sets[setIndexes[setName]];
         let out = {

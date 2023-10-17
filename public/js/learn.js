@@ -4,7 +4,8 @@ const userdataPromise = window.dataLoader.getUserData();
 const setName = new URLSearchParams(window.location.search).get("set");
 //functions to be set in the promise (bad code) (are partially created for intellisense)
 var study = async (term) => term, master = async  (term) => term,
-    reset = (setName) => setName, setAnswerMode = () => {};
+    reset = (setName) => setName, setAnswerMode = () => {},
+    setAnswerType = () => {};
 //insures all study or master promises are resolved when needed
 var lastStudyPromise = new Promise((resolve) => {resolve();});
 //check if we are interRound
@@ -28,7 +29,7 @@ var termListNoSection = [];
 var termIndex = 0;
 //control's if the buttons can be clicked
 var active = true;
-//answer with term or definition (0 term 1 def)
+//answer with term or definition (0 def 1 term)
 var termOrDef = 0;
 //write or button mode (0 button, 1 write)
 var answerMode = 0;
@@ -415,8 +416,14 @@ $("activateOptions").addEventListener("click", () => { $("options").style.displa
 $("exit").addEventListener("click", () => { $("options").style.display = "none"; });
 $("submit").addEventListener("click", answerWritten);
 $("dontKnow").addEventListener("click", () => { $("text").value = ""; answerWritten(); });
-$("modeSelect").addEventListener("change", function() {this.value === "Multiple Choice" ? answerMode = 0 : answerMode = 1; selectivePopulate();});
-// $("reset").addEventListener("click", () => {reset(setName);});
+$("modeSelect").addEventListener("change", function() {
+    this.value === "Multiple Choice" ? answerMode = 0 : answerMode = 1; selectivePopulate();
+    setAnswerMode();
+});
+$("termOrDefSelect").addEventListener("change", function() {
+    this.value === "Definition" ? termOrDef = 0 : termOrDef = 1; selectivePopulate();
+    setAnswerType();
+});
 
 for (let i = 1; i <= 4; i++) {
     $(`answer${i}`).addEventListener("click", function () {if (active) { answerButton(this.id[this.id.length - 1]); }}, true);
@@ -461,6 +468,10 @@ userdataPromise.then((userdata) => {
         window.dataLoader.setAnswerMode(setName, answerMode === 0 ? "multipleChoice" : "write");
     };
 
+    setAnswerType = () => {
+        window.dataLoader.setAnswerType(setName, termOrDef === 0 ? "Definition" : "Term");
+    };
+
     reset = (setName) => {
         window.dataLoader.reset(setName);
         location.reload();
@@ -468,6 +479,8 @@ userdataPromise.then((userdata) => {
 
     // initialize
     answerMode = set.metadata.answerMode === "multipleChoice" ? 0 : 1;
+    termOrDef = set.metadata.answerType === "Definition" ? 0 : 1;
+
     genTermArr(set); //creates termList.
     generateRoundTerms();
     selectivePopulate();

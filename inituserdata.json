@@ -31,7 +31,8 @@
             },
             "metadata": {
                 "name": "spanish capitals",
-                "answerMode": "multipleChoice"
+                "answerMode": "multipleChoice",
+                "answerType": "Definition"
             }
         },
         {
@@ -65,7 +66,8 @@
             },
             "metadata": {
                 "name": "spanish nationalities",
-                "answerMode": "multipleChoice"
+                "answerMode": "multipleChoice",
+                "answerType": "Definition"
             }
         },
         {
@@ -102,7 +104,8 @@
             },
             "metadata": {
                 "name": "Art Vocab",
-                "answerMode": "multipleChoice"
+                "answerMode": "multipleChoice",
+                "answerType": "Definition"
             }
         }
 
