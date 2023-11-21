@@ -76,17 +76,17 @@ app.whenReady().then(() => {
         userdata.sets[setIndexes[set]].metadata.answerType = type;
     });
 
+    ipcMain.on("setOption", (e, set, option, value) => {
+        userdata.sets[setIndexes[set]].metadata[option] = value;
+    });
+
     ipcMain.on("reset", (e, setName) => {
         let set = userdata.sets[setIndexes[setName]];
         let out = {
             "cards": {
-                "notStudied": {
-
-                },
-                "studying": {
-                },
-                "mastered": {
-                }
+                "notStudied": {},
+                "studying": {},
+                "mastered": {}
             },
             "metadata": {
                 "name": userdata.sets[setIndexes[setName]].metadata.name
@@ -100,7 +100,6 @@ app.whenReady().then(() => {
         }
 
         userdata.sets[setIndexes[setName]] = out;
-        console.log(userdata.sets[setIndexes[setName]]);
     });
 
 });

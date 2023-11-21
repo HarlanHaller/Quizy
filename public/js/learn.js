@@ -5,7 +5,7 @@ const setName = new URLSearchParams(window.location.search).get("set");
 //functions to be set in the promise (bad code) (are partially created for intellisense)
 var study = async (term) => term, master = async  (term) => term,
     reset = (setName) => setName, setAnswerMode = () => {},
-    setAnswerType = () => {};
+    setAnswerType = () => {}, setCheckCaps = () => {}, setUseStrict = () => {};
 //insures all study or master promises are resolved when needed
 var lastStudyPromise = new Promise((resolve) => {resolve();});
 //check if we are interRound
@@ -35,6 +35,10 @@ var termOrDef = 0;
 var answerMode = 0;
 //Callback last used by prompt()
 var lastCallback = 0;
+//ture if capitalization should be checked
+var checkCaps = false;
+//true if the set should use strict answer mode
+var strictAnswer = false;
 
 //parameters
 const MAX_STUDYING_PER_ROUND = 3;
@@ -142,6 +146,7 @@ function markIncorrect(elem) {
 function markCorrectWritten() {
     deactivate();
     let elem = $("text");
+    elem.value = roundTerms[termIndex][inv(termOrDef)];
     let parent = elem.parentElement;
     parent.style.backgroundColor = colors.backgroundCorrectColor;
     parent.style.borderColor = colors.correctColor;
@@ -252,7 +257,7 @@ function answerButton(value) {
 function answerWritten() {
     if (!active) return;
     let value = $("text").value;
-    if (value === roundTerms[termIndex][inv(termOrDef)]) {
+    if (evaulateAnswer(value, roundTerms[termIndex][inv(termOrDef)])) {
         markCorrectWritten();
 
         setTimeout(() => {
@@ -269,6 +274,23 @@ function answerWritten() {
         $("correctTextContainer").style.display = "block";
     }
     termIndex++;
+}
+
+function evaulateAnswer(answer, correct) {
+    if (!checkCaps) {
+        answer = answer.toLowerCase();
+        correct = correct.toLowerCase();
+    }
+
+    if (strictAnswer || answer === correct) {
+        return answer === correct;
+    }
+
+    for (let i of correct.split (" / ")) {
+        if (answer === i) return true;
+    }
+
+    return answer === correct;
 }
 
 function studyOrMasterTerm(term) {
@@ -354,7 +376,7 @@ function createHTMLTermList() {
 
 function getSet(userdata, setName) {
     for (let i of userdata.sets) {
-        if (i.metadata.name == setName) return i;
+        if (i.metadata.name === setName) return i;
     }
     throw new Error("not a set");
 }
@@ -362,12 +384,8 @@ function getSet(userdata, setName) {
 function findArr(target, source) {
     if (!Array.isArray(source)) throw new Error("source is not an array");
     for (let index in source) {
-        if ( JSON.stringify(source[index]) == JSON.stringify(target)) return index;
+        if ( JSON.stringify(source[index]) === JSON.stringify(target)) return index;
     }
-}
-
-function objLen(obj) {
-    return Object.keys(obj).length;
 }
 
 function createElem(type, parent, Text, attributes) {
@@ -382,7 +400,7 @@ function createElem(type, parent, Text, attributes) {
 }
 
 function selectivePopulate() {
-    answerMode == 0 ? populateValuesButtons() : populateValuesWritten();
+    answerMode === 0 ? populateValuesButtons() : populateValuesWritten();
 }
 
 function link(href) {
@@ -425,6 +443,15 @@ $("termOrDefSelect").addEventListener("change", function() {
     setAnswerType();
 });
 
+$("capsSetting").addEventListener("change", function() {
+    checkCaps = this.checked;
+});
+
+$("answerModeSetting").addEventListener("change", function() {
+    strictAnswer = this.checked;
+});
+
+
 for (let i = 1; i <= 4; i++) {
     $(`answer${i}`).addEventListener("click", function () {if (active) { answerButton(this.id[this.id.length - 1]); }}, true);
 }
@@ -465,11 +492,21 @@ userdataPromise.then((userdata) => {
     };
 
     setAnswerMode = () => {
-        window.dataLoader.setAnswerMode(setName, answerMode === 0 ? "multipleChoice" : "write");
+        // window.dataLoader.setAnswerMode(setName, answerMode === 0 ? "multipleChoice" : "write");
+        window.dataLoader.setOption(setName, "answerMode", answerMode === 0 ? "multipleChoice" : "write");
     };
 
     setAnswerType = () => {
-        window.dataLoader.setAnswerType(setName, termOrDef === 0 ? "Definition" : "Term");
+        // window.dataLoader.setAnswerType(setName, termOrDef === 0 ? "Definition" : "Term");
+        window.dataLoader.setOption(setName, "answerType", termOrDef === 0 ? "Definition" : "Term");
+    };
+
+    setCheckCaps = () => {
+        window.dataLoader.setOption(setName, "checkCaps", checkCaps);
+    };
+
+    setUseStrict = () => {
+        window.dataLoader.setOption(setName, "useStrict", strictAnswer);
     };
 
     reset = (setName) => {
@@ -477,9 +514,17 @@ userdataPromise.then((userdata) => {
         location.reload();
     };
 
-    // initialize
+    // initialize options
     answerMode = set.metadata.answerMode === "multipleChoice" ? 0 : 1;
     termOrDef = set.metadata.answerType === "Definition" ? 0 : 1;
+    checkCaps = set.metadata.checkCaps;
+    strictAnswer = set.metadata.useStrict;
+
+    //set setting selectors
+    $("termOrDefSelect").value = termOrDef === 0 ? "Definition" : "Term";
+    $("modeSelect").value = answerMode === 0 ? "Multiple Choice" : "Writing";
+    $("capsSetting").checked = checkCaps;
+    $("answerModeSetting").checked = strictAnswer;
 
     genTermArr(set); //creates termList.
     generateRoundTerms();

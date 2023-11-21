@@ -53,7 +53,7 @@ const flipCard = (e) => {
         $("card").className == "flip-card animations"
             ? ($("card").className = "flip-card animations flipped")
             : ($("card").className = "flip-card animations");
-    }
+    } else e.preventDefault();
 };
 
 

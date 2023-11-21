@@ -32,7 +32,9 @@
             "metadata": {
                 "name": "spanish capitals",
                 "answerMode": "multipleChoice",
-                "answerType": "Definition"
+                "answerType": "Definition",
+                "checkCaps": false,
+                "useStrict": false
             }
         },
         {
@@ -49,25 +51,28 @@
                     "Republica Dominicana": "dominicano",
                     "Puerto Rico": "puertoriqueño",
                     "Colombia": "colombiano",
-                    "Ecuador": "ecuatoriano"
-
-                },
-                "studying": {
+                    "Ecuador": "ecuatoriano",
                     "Peru": "peruano",
                     "Bolivia": "boliviano",
                     "Chile": "chileno",
-                    "Argentina": "argentino"
-                },
-                "mastered": {
+                    "Argentina": "argentino",
                     "Paraguay": "paraguayo",
                     "Uruguay": "uruguayo",
                     "Venezuela": "venezolano"
+
+                },
+                "studying": {
+
+                },
+                "mastered": {
                 }
             },
             "metadata": {
                 "name": "spanish nationalities",
                 "answerMode": "multipleChoice",
-                "answerType": "Definition"
+                "answerType": "Definition",
+                "checkCaps": false,
+                "useStrict": false
             }
         },
         {
@@ -89,7 +94,7 @@
                     "El mural": "mural",
                     "Esculpir": "to sculpt",
                     "Pintar": "to paint",
-                    "El pintor / La pintora": "painter",
+                    "pintor(a)": "painter",
                     "Dibujar": "to draw",
                     "El pincel": "paintbrush",
                     "Crear": "create",
@@ -105,12 +110,69 @@
             "metadata": {
                 "name": "Art Vocab",
                 "answerMode": "multipleChoice",
-                "answerType": "Definition"
+                "answerType": "Definition",
+                "checkCaps": false,
+                "useStrict": false
+            }
+        },
+        {
+            "cards": {
+                "notStudied": {
+                    "Hydrogen": "H",
+                    "Helium": "He",
+                    "Lithium": "Li",
+                    "Beryllium": "Be",
+                    "Boron": "B",
+                    "Carbon": "C",
+                    "Nitrogen": "N",
+                    "Oxygen": "O",
+                    "Fluorine": "F",
+                    "Neon": "Ne",
+                    "Sodium": "Na",
+                    "Magnesium": "Mg",
+                    "Aluminum": "Al",
+                    "Silicon": "Si",
+                    "Phosphorus": "P",
+                    "Sulfur": "S",
+                    "Chlorine": "Cl",
+                    "Argon": "Ar",
+                    "Potassium": "K",
+                    "Calcium": "Ca",
+                    "Chromium": "Cr",
+                    "Manganese": "Mn",
+                    "Iron": "Fe",
+                    "Nickel": "Ni",
+                    "Copper": "Cu",
+                    "Zinc": "Zn",
+                    "Bromine": "Br",
+                    "Krypton": "Kr",
+                    "Strontium": "Sr",
+                    "Silver": "Ag",
+                    "Tin": "Sn",
+                    "Iodine": "I",
+                    "Xenon": "Xe",
+                    "Barium": "Ba",
+                    "Gold": "Au",
+                    "Mercury": "Hg",
+                    "Lead": "Pb",
+                    "Radon": "Rn",
+                    "Francium": "Fr",
+                    "Radium": "Ra"
+                },
+                "studying": {},
+                "mastered": {}
+            },
+            "metadata": {
+                "name": "Elements",
+                "answerMode": "multipleChoice",
+                "answerType": "Definition",
+                "checkCaps": false,
+                "useStrict": false
             }
         }
 
     ],
     "metadata": {
-        "last-opened": null
+        "last-opened": "Elements"
     }
 }

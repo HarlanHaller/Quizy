@@ -11,5 +11,6 @@ contextBridge.exposeInMainWorld("dataLoader", {
     master: (setName, term) => ipcRenderer.send("master-term", setName, term),
     reset: (setName) => ipcRenderer.send("reset", setName),
     setAnswerMode: (setName, mode) => ipcRenderer.send("setAnswerMode", setName, mode),
-    setAnswerType: (setName, type) => ipcRenderer.send("setAnswerType", setName, type)
+    setAnswerType: (setName, type) => ipcRenderer.send("setAnswerType", setName, type),
+    setOption: (setName, option, value) => ipcRenderer.send("setOption", setName, option, value)
 });
